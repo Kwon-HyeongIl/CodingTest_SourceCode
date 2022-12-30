@@ -40,8 +40,5 @@ public class N_11286 {
 				return Math.abs(o1)-Math.abs(o2);
 			}
 		}
-
-
-		
 	}
 }
