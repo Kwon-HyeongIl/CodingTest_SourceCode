@@ -1,4 +1,4 @@
-package baekjoon_algorithm_S;
+package baekjoon_algorithm;
 
 import java.util.Scanner;
 
