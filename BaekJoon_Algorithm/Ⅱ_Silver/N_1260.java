@@ -10,6 +10,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class N_1260 {
+	
 	static ArrayList<Integer>[] list;
 	static Queue<Integer> queue = new LinkedList<>();
 	static boolean[] checked;
