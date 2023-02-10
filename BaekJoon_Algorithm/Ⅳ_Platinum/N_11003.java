@@ -30,6 +30,7 @@ public class N_11003 {
 				deque.pollLast();
 			}
 			deque.offerLast(new Node(i, nextNum));  
+			
 			if (deque.peekFirst().index <= i-L) {
 				deque.pollFirst();
 			}
