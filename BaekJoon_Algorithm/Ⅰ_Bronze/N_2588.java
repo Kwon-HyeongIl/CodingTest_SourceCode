@@ -18,6 +18,7 @@ public class N_2588 {
     		sb.append(a*(k%10)).append("\n");
     		k /= 10;
     	}
+        
     	sb.append(a*b);
     	
     	System.out.println(sb);
