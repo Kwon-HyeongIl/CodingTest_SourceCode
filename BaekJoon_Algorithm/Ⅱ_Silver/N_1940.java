@@ -10,7 +10,6 @@ public class N_1940 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.valueOf(br.readLine());
 		int M = Integer.valueOf(br.readLine());
-		
 		int[] arr = new int[N];
 		int sum = 0;
 		int count = 0;
