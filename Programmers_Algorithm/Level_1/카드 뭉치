@@ -1,0 +1,26 @@
+class Solution {
+    public String solution(String[] cards1, String[] cards2, String[] goal) {
+        String answer = "";
+        int one = 0;
+        int two = 0;
+        
+        for (String word : goal) {
+            if (one<cards1.length && cards1[one].equals(word)) {
+                one++;
+                continue;
+            } else if (two<cards2.length && cards2[two].equals(word)) {
+                two++;
+                continue;
+            } else {
+                answer = "No";
+                break;
+            }
+        }
+        
+        if (!answer.equals("No")) {
+            answer = "Yes";
+        }
+        
+        return answer;
+    }
+}
