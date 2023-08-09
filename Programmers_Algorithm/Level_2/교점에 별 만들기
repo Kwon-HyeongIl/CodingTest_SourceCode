@@ -1,0 +1,85 @@
+import java.util.*;
+
+class Solution {
+    
+    public String[] solution(int[][] line) {
+        Set<Point> intPoint = new HashSet<>();
+        
+        long highX=Long.MIN_VALUE, lowX=Long.MAX_VALUE, highY=Long.MIN_VALUE, lowY=Long.MAX_VALUE; // 미리 정반대의 극값으로 설정
+
+        for (int i=0; i<line.length; i++) {
+            for (int k=i+1; k<line.length; k++) {
+                Point temp = interSectPoint(line[i][0], line[i][1], line[i][2], line[k][0], line[k][1], line[k][2]);
+
+                if (temp != null) {
+                    intPoint.add(temp);
+                    
+                    // 상하좌우 최대,최소값 구하기
+                    highX = Math.max(highX, temp.x);
+                    lowX = Math.min(lowX, temp.x);
+                    highY = Math.max(highY, temp.y);
+                    lowY = Math.min(lowY, temp.y);
+                }
+            }
+        }
+
+        int row = (int)(highX - lowX + 1);
+        int column = (int)(highY - lowY + 1);
+
+        // 사각형 생성
+        char[][] square = new char[column][row];
+        for (char[] temp : square) {
+            Arrays.fill(temp, '.');
+        }
+
+        // 사각형에 별 찍기
+        for (Point p : intPoint) {
+            int x = (int)(p.x - lowX);
+            int y = (int)(highY - p.y);
+
+            square[y][x] = '*';
+        }
+
+        // 이중 char 배열을 단일 String 배열로 옮기기
+        String[] answer = new String[square.length];
+        for (int i=0; i<square.length; i++) {
+            answer[i] = new String(square[i]);
+        }
+
+        return answer;
+    }
+
+    private static class Point {
+        public long x,y;
+
+        Point(long x, long y) {
+            this.x = x;
+            this.y = y;
+        }
+        
+        // Set 내에서 Point 타입 값의 중복을 없애기 위해 equals, hashCode 메소드 오버라이드
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o==null || getClass()!=o.getClass()) return false;
+            Point p = (Point) o;
+            return Objects.equals(x, p.x) && Objects.equals(y, p.y);
+        }
+        
+        @Override
+        public int hashCode() {
+            return Objects.hash(x, y);
+        }
+    }
+
+    // 교점 구하기
+    private static Point interSectPoint(int a1, int b1, int c1, int a2, int b2, int c2) {
+
+        double x = ((double)b1*c2-b2*c1)/((double)a1*b2-a2*b1); // 분모 분자 각각을 double로 변환해줘야함 (곱하는 과정에서 int 범위를 초과)
+        double y = ((double)a2*c1-a1*c2)/((double)a1*b2-a2*b1); 
+
+        if (x%1!=0 || y%1!=0 || (double)(a1*b2-a2*b1)==0) {return null;}
+
+        return new Point((long) x, (long) y);
+    }
+}
