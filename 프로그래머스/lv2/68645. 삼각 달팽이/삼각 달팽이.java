@@ -1,0 +1,107 @@
+class Solution {
+    public int[] solution(int n) {
+        
+        // 시간초과 때문에 n이 1과 2일 경우만 따로 분리
+        if (n == 1) {
+            int[] a = new int[1];
+            a[0] = 1;
+            
+            return a;
+            
+        } else if (n == 2) {
+            int[] a = new int[3];
+            
+            for (int i=0; i<3; i++) {
+                a[i] = i+1;
+            }
+            
+            return a;
+        }
+        
+        boolean last = true, down = true, right = false, up = false;
+        int count = 1, index = 0, line = 0;
+        
+        // 피라미드 형태의 배열 생성
+        int[][] list = new int[n][];
+        for (int i=0; i<n; i++) {
+            list[i] = new int[i+1];
+        }
+        
+        while (last) {
+            
+            // 왼쪽 아래로 이동하는 경우
+            while (down) {
+                if (line == n-1) {
+                    down = false;
+                    right = true;
+                } else if (list[line+1][index] == 0) {
+                    list[line][index] = count;
+                    count++; line++;
+                } else if (list[line+1][index] != 0) {
+                    down = false;
+                    right = true;
+                    
+                    if (list[line][index+1] != 0) {
+                        list[line][index] = count;
+                        right = false;
+                        last = false;
+                    }
+                } 
+                
+            }
+            
+            // 오른쪽으로 이동하는 경우
+            while (right) {
+                if (index == n-1) {
+                    right = false;
+                    up = true;
+                } else if (list[line][index+1] == 0) {
+                    list[line][index] = count;
+                    count++; index++;
+                } else if (list[line][index+1] != 0) {
+                    right = false;
+                    up = true;
+                    
+                    if (list[line-1][index-1] != 0) {
+                        list[line][index] = count;
+                        up = false;
+                        last = false;
+                    }
+                } 
+            }
+            
+            // 왼쪽 위로 이동하는 경우
+            while (up) {
+                if (list[line-1][index-1] == 0) {
+                    list[line][index] = count;
+                    count++; line--; index--;
+                } else if (list[line-1][index-1] != 0) {
+                    up = false;
+                    down  = true;
+                    
+                    if (list[line+1][index] != 0) {
+                        list[line][index] = count;
+                        last = false;
+                    }
+                }
+            }    
+        }
+        
+        // 반환할 배열 크기 구하기
+        int total = 0, num = 0;
+        for (int[] array : list) {
+            total += array.length;
+        }
+        
+        int[] answer = new int[total];
+        
+        // 이중배열을 단일배열로 옮기기
+        for (int[] array : list) {
+            for (int number : array) {
+                answer[num++] = number;
+            }
+        }
+
+        return answer;
+    }
+}
