@@ -34,9 +34,10 @@ class Solution {
                 if (line == n-1) {
                     down = false;
                     right = true;
+                    
                 } else if (list[line+1][index] == 0) {
-                    list[line][index] = count;
-                    count++; line++;
+                    list[line++][index] = count++;
+                    
                 } else if (list[line+1][index] != 0) {
                     down = false;
                     right = true;
@@ -55,9 +56,10 @@ class Solution {
                 if (index == n-1) {
                     right = false;
                     up = true;
+                    
                 } else if (list[line][index+1] == 0) {
-                    list[line][index] = count;
-                    count++; index++;
+                    list[line][index++] = count++;
+                    
                 } else if (list[line][index+1] != 0) {
                     right = false;
                     up = true;
@@ -73,8 +75,8 @@ class Solution {
             // 왼쪽 위로 이동하는 경우
             while (up) {
                 if (list[line-1][index-1] == 0) {
-                    list[line][index] = count;
-                    count++; line--; index--;
+                    list[line--][index--] = count++;
+                    
                 } else if (list[line-1][index-1] != 0) {
                     up = false;
                     down  = true;
