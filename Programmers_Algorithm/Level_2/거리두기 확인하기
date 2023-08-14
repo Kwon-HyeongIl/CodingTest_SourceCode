@@ -1,0 +1,72 @@
+class Solution {
+    public int[] solution(String[][] places) {
+        int[] answer = new int[5];
+        int index = 0;
+        
+        checkRoom : for (String[] room : places) {
+            for (int i=0; i<5; i++) {
+                for (int k=0; k<5; k++) {
+                    
+                    // P가 발견될 경우
+                    if (room[i].charAt(k) == 'P') {
+                        
+                        // 발견된 P 기준, 왼쪽 밑이 P일 경우
+                        if (k!=0 && i!=4) {
+                            if (room[i+1].charAt(k-1) == 'P') {
+                                if (room[i].charAt(k-1)=='O' || room[i+1].charAt(k)=='O') {
+                                    answer[index++] = 0;
+                                    continue checkRoom;
+                                }
+                            }
+                        }
+                        
+                        // 발견된 P 기준, 밑이 P일 경우
+                        if (i!=4) {
+                            if (room[i+1].charAt(k) == 'P') {
+                                answer[index++] = 0;
+                                continue checkRoom;
+                            }
+                        }
+                            
+                        // 발견된 P 기준, 두칸 밑이 P일 경우
+                        if (i<3) {
+                            if (room[i+2].charAt(k)=='P' && room[i+1].charAt(k)=='O') {
+                                answer[index++] = 0;
+                                continue checkRoom;
+                            }
+                        }
+                        
+                        // 발견된 P 기준, 오른쪽 밑이 P일 경우
+                        if (k!=4 && i!=4) {
+                            if (room[i+1].charAt(k+1) == 'P') {
+                                if (room[i].charAt(k+1)=='O' || room[i+1].charAt(k)=='O') {
+                                    answer[index++] = 0;
+                                    continue checkRoom;
+                                }
+                            }
+                        }
+                        
+                        // 발견된 P 기준, 오른쪽이 P일 경우
+                        if (k!=4) {
+                            if (room[i].charAt(k+1) == 'P') {
+                                answer[index++] = 0;
+                                continue checkRoom;
+                            }
+                        }
+                        
+                        // 발견된 P 기준, 두칸 오른쪽이 P일 경우
+                        if (k<3) {
+                            if (room[i].charAt(k+2)=='P' && room[i].charAt(k+1)=='O') {
+                                answer[index++] = 0;
+                                continue checkRoom;
+                            }
+                        }
+                    }
+                }
+            }
+            answer[index++] = 1;
+        }
+        
+        return answer;
+    }
+}
