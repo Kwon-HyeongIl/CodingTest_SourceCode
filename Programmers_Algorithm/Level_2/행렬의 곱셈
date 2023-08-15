@@ -1,0 +1,25 @@
+class Solution {
+    public int[][] solution(int[][] arr1, int[][] arr2) {
+        
+        int[][] answer = new int[arr1.length][arr2[0].length];
+        
+        for (int arr1Row=0; arr1Row<arr1.length; arr1Row++) {
+            for (int arr2Column=0; arr2Column<arr2[0].length; arr2Column++) {
+                answer[arr1Row][arr2Column] = multiple(arr1[arr1Row], arr2, arr2Column);
+            }
+        }
+        
+        return answer;
+    }
+    
+    // 개별 곱셈 메소드
+    static int multiple(int[] arr1Line, int[][] arr2Array, int arr2Column) {
+        int sum = 0;
+        
+        for (int i=0; i<arr1Line.length; i++) {
+            sum += arr1Line[i] * arr2Array[i][arr2Column];
+        }
+        
+        return sum;
+    }
+}
