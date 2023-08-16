@@ -1,0 +1,23 @@
+class Solution {
+    public String solution(String s) {
+        
+        char[] charArray = s.toCharArray();
+        int index = 0;
+        
+        for (int i=0; i<s.length(); i++) {
+            char temp = charArray[i];
+            
+            if (temp == ' ') { // 공백일 때
+                index = 0;
+            } else if (index%2 == 0) { // 짝수일 때
+                charArray[i] = Character.toUpperCase(temp);
+                index++;
+            } else if (index%2 != 0) { // 홀수일 때
+                charArray[i] = Character.toLowerCase(temp);
+                index++;
+            }
+        }
+        
+        return new String(charArray);
+    }
+}
