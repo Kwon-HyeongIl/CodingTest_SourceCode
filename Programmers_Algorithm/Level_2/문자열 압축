@@ -1,0 +1,51 @@
+class Solution {
+    public int solution(String s) {
+        int result = s.length();
+        
+        // 범위를 줄여가며 순회
+        for (int i=s.length()/2; i>=1; i--) {
+            int index = 0, sum = s.length(), count=0;
+            
+            // 정해진 범위에 따라 문자열을 순회
+            while (index+2*i <= s.length()) {
+                
+                String first = s.substring(index, index+i);
+                String second = s.substring(index+i, index+2*i);
+                
+                if (first.equals(second)) {
+                    
+                    if (count == 0) {
+                        sum -= i-1;
+                        count++;
+                        index += i;
+                        continue;
+                    }
+                    
+                    // 숫자가 두자리 이상인 경우도 고려
+                    if (count == 10-2) {
+                        sum++;
+                    } else if (count == 100-2) {
+                        sum++;
+                    } else if (count == 1000-2) {
+                        sum++;
+                    }
+                    
+                    sum -= i;
+                    count++;
+                    index += i;
+                    continue;
+                }
+                
+                count = 0;
+                index += i;
+            }
+            
+            // 2~(문자열 길이의 절반) 범위로 나눈것 중 가장 작은 값을 result에 저장
+            if (result > sum) {
+                result = sum;
+            }
+        }
+        
+        return result;
+    }
+}
