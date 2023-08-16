@@ -1,0 +1,32 @@
+class Solution {
+    public String solution(String s, int n) {
+        
+        char[] str = s.toCharArray();
+        
+        for (int i=0; i<s.length(); i++) {
+            int move = str[i] + n;
+            
+            if (str[i] == ' ') {
+                continue;
+                
+            } else if (str[i]>64 && str[i]<91) { // 알파벳이 대문자일 경우
+
+                if (move < 91) {
+                    str[i] = (char) move;
+                } else {
+                    str[i] = (char)(64 + (move-90));
+                }
+            } else { // 알파벳이 소문자일 경우
+                
+                if (move < 123) {
+                    str[i] = (char) move;
+                } else {
+                    str[i] = (char)(96 + (move-122));
+                }
+            }
+        }
+        
+        String answer = new String(str);
+        return answer;
+    }
+}
