@@ -9,16 +9,16 @@ class Solution {
             if (str[i] == ' ') {
                 continue;
                 
-            } else if (str[i]>64 && str[i]<91) { // 알파벳이 대문자일 경우
+            } else if (str[i]>='A' && str[i]<='Z') { // 알파벳이 대문자일 경우
 
-                if (move < 91) {
+                if (move <= 'Z') {
                     str[i] = (char) move;
                 } else {
                     str[i] = (char)(64 + (move-90));
                 }
             } else { // 알파벳이 소문자일 경우
                 
-                if (move < 123) {
+                if (move <= 'z') {
                     str[i] = (char) move;
                 } else {
                     str[i] = (char)(96 + (move-122));
