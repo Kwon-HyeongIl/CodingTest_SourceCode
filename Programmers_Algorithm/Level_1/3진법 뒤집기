@@ -1,29 +1,7 @@
-import java.util.*;
-
 class Solution {
     public int solution(int n) {
-        List<Integer> list = new ArrayList<>();
-        
-        // 3진법 변환
-        while (true) {
-            
-            if (n < 3) {
-                list.add(n);
-                break;
-            }
-            
-            list.add(n%3);
-            n /= 3;
-        }
-        
-        int answer = 0, mulNum = 1;
-        
-        // 10진법 변환
-        for (int i=list.size()-1; i>=0; i--) {
-            answer += list.get(i)*mulNum;
-            mulNum *= 3;
-        }
-
-        return answer;
+        String num3 = Integer.toString(n, 3); // 숫자를 3진수로 변환하는 메소드
+        String reversed = new StringBuilder(num3).reverse().toString();
+        return Integer.valueOf(reversed, 3); // 문자열을 10진수로 변환하는 메소드
     }
 }
