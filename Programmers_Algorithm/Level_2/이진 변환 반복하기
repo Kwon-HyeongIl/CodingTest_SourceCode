@@ -1,0 +1,26 @@
+class Solution {
+    static int convertCount, zeroDeletedCount;
+    public int[] solution(String s) {
+        String temp = s;
+        
+        while (true) {
+            if (temp.equals("1")) {break;}
+            temp = convertBinary(deleteZero(temp));
+            convertCount++;
+        }
+        
+        return new int[] {convertCount, zeroDeletedCount};
+    }
+    
+    // 0 제거 메소드
+    static String deleteZero(String num) {
+        String delete = num.replace("0", "");
+        zeroDeletedCount += num.length()-delete.length();
+        return delete;
+    }
+    
+    // 2진수 변환 메소드
+    static String convertBinary(String num) {
+        return Integer.toString(num.length(), 2);
+    }
+}
