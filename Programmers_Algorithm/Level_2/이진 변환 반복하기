@@ -3,8 +3,7 @@ class Solution {
     public int[] solution(String s) {
         String temp = s;
         
-        while (true) {
-            if (temp.equals("1")) {break;}
+        while (!temp.equals("1")) {
             temp = convertBinary(deleteZero(temp));
             convertCount++;
         }
