@@ -1,0 +1,123 @@
+class Solution {
+    static int zero, one, temp;
+    
+    public int[] solution(int[][] arr) {
+        
+        // 모두 1이거나 0일 경우
+        temp = arr[0][0];
+        A : for (int i=0; i<arr.length; i++) {
+            for (int k=0; k<arr[0].length; k++) {
+                if (temp != arr[i][k]) {
+                    break A;
+                } else if (i==arr.length-1 && k==arr[0].length-1) {
+                    if (temp == 0) {
+                        return new int[] {1, 0};
+                    } else {
+                        return new int[] {0, 1};
+                    }
+                }
+            }
+        }
+        
+        divide(0, 0, arr, arr.length);
+        
+        return new int[] {zero, one};
+    }
+    
+    static void divide(int startX, int startY, int[][] arr, int size) {
+        
+        // 낱개로 나눠졌을 경우
+        if (size == 2) {
+            for (int i=startY; i<=startY+1; i++) {
+                for (int k=startX; k<=startX+1; k++) {
+                    if (arr[i][k]==0) {
+                        zero++;
+                    } else {
+                        one++;
+                    }
+                }
+            }
+            return;
+        }
+        
+        // 왼쪽 위
+        temp = arr[startY][startX];
+        
+        A : for (int i=startY; i<startY+size/2; i++) {
+            for (int k=startX; k<startX+size/2; k++) {
+                
+                if (temp != arr[i][k]) {
+                    divide(startX, startY, arr, size/2);
+                    break A;
+                    
+                } else if (i==(startY+size/2)-1 && k==(startX+size/2)-1) {
+                    if (temp == 0) {
+                        zero++;
+                    } else {
+                        one++;
+                    }
+                }
+            }
+        }
+        
+        // 오른쪽 위
+        temp = arr[startY][startX+size/2];
+        
+        A : for (int i=startY; i<startY+size/2; i++) {
+            for (int k=startX+size/2; k<startX+size; k++) {
+                
+                if (temp != arr[i][k]) {
+                    divide(startX+size/2, startY, arr, size/2);
+                    break A;
+                    
+                } else if (i==(startY+size/2)-1 && k==startX+size-1) {
+                    if (temp == 0) {
+                        zero++;
+                    } else {
+                        one++;
+                    }
+                }
+            }
+        }
+        
+        // 왼쪽 아래
+        temp = arr[startY+size/2][startX];
+        
+        A : for (int i=startY+size/2; i<startY+size; i++) {
+            for (int k=startX; k<startX+size/2; k++) {
+                
+                if (temp != arr[i][k]) {
+                    divide(startX, startY+size/2, arr, size/2);
+                    break A;
+                    
+                } else if (i==startY+size-1 && k==(startX+size/2)-1) {
+                    if (temp == 0) {
+                        zero++;
+                    } else {
+                        one++;
+                    }
+                }
+            }
+        }
+        
+        // 오른쪽 아래
+        temp = arr[startY+size/2][startX+size/2];
+        
+        A : for (int i=startY+size/2; i<startY+size; i++) {
+            for (int k=startX+size/2; k<startX+size; k++) {
+                
+                if (temp != arr[i][k]) {
+                    divide(startX+size/2, startY+size/2, arr, size/2);
+                    break A;
+                    
+                } else if (i==(startY+size)-1 && k==(startX+size)-1) {
+                    if (temp == 0) {
+                        zero++;
+                    } else {
+                        one++;
+                    }
+                }
+            }
+        }
+    }
+}
