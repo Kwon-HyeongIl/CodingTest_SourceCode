@@ -1,0 +1,23 @@
+import java.util.*;
+
+class Solution {
+    public int[][] solution(int n) {
+        List<int[]> arr = new ArrayList<>();
+        hanoi(n, 1, 3, arr);
+        return arr.toArray(new int[arr.size()][]); 
+    }
+    
+    private void hanoi(int n, int from, int to, List<int[]> arr) {
+        
+        if (n == 1) {
+            arr.add(new int[] {from, to});
+            return;
+        }
+        
+        int empty = 6 - from - to;
+        
+        hanoi(n-1, from, empty, arr);
+        hanoi(1, from, to, arr);
+        hanoi(n-1, empty, to, arr);
+    }
+}
