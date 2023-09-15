@@ -1,0 +1,52 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] answers) {
+        
+        List<Integer> list = new ArrayList<>();
+        int[] count = new int[4];
+        int max;
+        
+        int[] one = new int[] {1, 2, 3, 4, 5};
+        int[] two = new int[] {2, 1, 2, 3, 2, 4, 2, 5};
+        int[] three = new int[] {3,3,1,1,2,2,4,4,5,5};
+        
+        // 1번 수포자
+        for (int i=0, k=0; i<answers.length; i++, k++) {
+            if (i%5 == 0) {k = 0;}
+            
+            if (answers[i] == one[k]) {count[1]++;}
+        }
+        
+        // 2번 수포자
+        for (int i=0, k=0; i<answers.length; i++, k++) {
+            if (i%8 == 0) {k = 0;}
+            
+            if (answers[i] == two[k]) {count[2]++;}
+        }
+        
+        // 3번 수포자
+        for (int i=0, k=0; i<answers.length; i++, k++) {
+            if (i%10 == 0) {k = 0;}
+            
+            if (answers[i] == three[k]) {count[3]++;}
+        }
+        
+        max = count[1];
+        if (max < count[2]) {max = count[2];}
+        if (max < count[3]) {max = count[3];}
+        
+        for (int i=1; i<=3; i++) {
+            if (max == count[i]) {
+                list.add(i);
+            }
+        }
+        
+        int[] correct = new int[list.size()];
+        for (int i=0; i<list.size(); i++) {
+            correct[i] = list.get(i);
+        }
+        
+        return correct;
+    }
+}
