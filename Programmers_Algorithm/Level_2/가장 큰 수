@@ -1,0 +1,18 @@
+import java.util.*;
+import java.util.stream.*;
+
+class Solution {
+    public String solution(int[] numbers) {
+        String result = Arrays.stream(numbers)
+                        .mapToObj(String::valueOf)
+                        .sorted((v1, v2) -> {
+                            int one = Integer.parseInt(v1 + v2);
+                            int two = Integer.parseInt(v2 + v1);
+                            return two - one;
+                        })
+                        .collect(Collectors.joining(""))
+                        .replaceAll("^0+", "0");
+        
+        return result;
+    }
+}
