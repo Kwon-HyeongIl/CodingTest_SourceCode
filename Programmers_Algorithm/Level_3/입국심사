@@ -1,0 +1,29 @@
+class Solution {
+    public long solution(int n, int[] times) {
+        long start = 1;
+        long end = 1000000000000000000L;
+        
+        while (end > start) {
+            long mid = (start + end) / 2;
+            
+            if (time(mid, times) >= n) { 
+                end = mid;
+            } else { // mid + 1 로 값을 증가시켜서 반복문을 끝내야 함
+                start = mid + 1;
+            }
+        }
+        
+        return start;
+    }
+    
+    // 주어진 t 시간 내에 통과할 수 있는 인원수 반환하는 메서드
+    private long time(long t, int[] times) {
+        long finalTime = 0;
+        
+        for (int checkTime : times) {
+            finalTime += t / checkTime;
+        }
+
+        return finalTime;
+    }
+}
