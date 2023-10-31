@@ -1,0 +1,23 @@
+import java.util.*;
+
+class Solution {
+    public String solution(String[] participant, String[] completion) {
+        
+        Map<String, Integer> partiMap = new HashMap<>();
+        
+        for (String name : participant) {
+            partiMap.putIfAbsent(name, 0);
+            partiMap.put(name, partiMap.get(name)+1);
+        }
+        
+        for (int i=0; i<completion.length; i++) {
+            partiMap.put(completion[i], partiMap.get(completion[i])-1);
+            
+            if (partiMap.get(completion[i]) == 0) {
+                partiMap.remove(completion[i]);
+            }
+        }
+        
+        return partiMap.keySet().iterator().next();
+    }
+}
