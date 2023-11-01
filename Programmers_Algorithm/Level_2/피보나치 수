@@ -1,0 +1,29 @@
+import java.util.*;
+
+class Solution {
+    
+    int[] check;
+    
+    public int solution(int n) {
+        
+        check = new int[n+1];
+        Arrays.fill(check, -1);
+        
+        return pibo(n);
+    }
+    
+    private int pibo(int n) {
+        
+        // 이미 메모이제이션 된 경우 기록된 값 반환
+        if (check[n] != -1) {
+            return check[n];
+        }
+        
+        // 0,1인 경우 0,1 반환
+        if (n == 0 || n == 1) {
+            return n;
+        }
+        
+        return check[n] = (pibo(n-1) + pibo(n-2)) % 1234567;
+    }
+}
