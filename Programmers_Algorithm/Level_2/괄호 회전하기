@@ -1,0 +1,85 @@
+import java.util.*;
+
+class Solution {
+    public int solution(String s) {
+        
+        Stack<Character> stack = new Stack<>();
+        List<Character> list = new ArrayList<>();
+        int count = 0;
+        
+        for (char c : s.toCharArray()) {
+            list.add(c);
+        }
+        
+        T : for (int i=0; i<s.length(); i++) {
+            
+            // s를 왼쪽으로 x칸 만큼 회전
+            if (i != 0) {
+                char temp = list.get(0);
+                list.remove(0);
+                list.add(temp);
+                
+                stack.clear();
+            }
+            
+            char temp = ' ';
+            
+            // 올바른 괄호 문자열인지 체크
+            for (int k=0; k<list.size(); k++) {
+                
+                switch (list.get(k)) {
+                        
+                        // 시작 포인트 값
+                        case '[' -> {
+                            stack.push('[');
+                        }
+                        case '(' -> {
+                            stack.push('(');
+                        }
+                        case '{' -> {
+                            stack.push('{');
+                        }
+                        
+                        // 엔드 포인트 값
+                        case ']' -> {
+                            
+                            try {
+                            temp = stack.pop();
+                            } catch (Exception e) {continue T;}
+                            
+                            if (temp != '[') {
+                                continue T;
+                            }
+                        }
+                        case ')' -> {
+                            
+                            try {
+                            temp = stack.pop();
+                            } catch (Exception e) {continue T;}
+                                
+                            if (temp != '(') {
+                                continue T;
+                            }
+                        }
+                        case '}' -> {
+                            
+                            try {
+                            temp = stack.pop();
+                            } catch (Exception e) {continue T;}
+                                
+                            if (temp != '{') {
+                                continue T;
+                            }
+                        }
+                }
+            }
+            
+            if (stack.isEmpty()) {
+                count++;
+            }
+        }
+        
+        return count;
+
+    }
+}
