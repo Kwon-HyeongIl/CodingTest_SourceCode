@@ -4,7 +4,7 @@ class Solution {
     public int solution(int bridge_length, int weight, int[] truck_weights) {
         
         Queue<Integer> queue = new LinkedList<>();
-        int time = 0; int nowWeight = 0; int truck = 0; int count = 0; int countR = 0;
+        int time = 0; int nowWeight = 0; int truck = 0; int count = 0;
         
         while (true) {
             
@@ -28,12 +28,13 @@ class Solution {
                 nowWeight -= passedTruck;
                 
                 if (passedTruck == truck_weights[count]) {
-                    countR++; count++;
+                    count++;
                     
-                    if (countR == truck_weights.length) {
+                    if (count == truck_weights.length) {
                         time++;
                         break;
                     }
+                    
                 }
             }
                 
