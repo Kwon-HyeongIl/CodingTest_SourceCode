@@ -1,0 +1,50 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] progresses, int[] speeds) {
+        
+        List<Integer> resultList = new ArrayList<>(); 
+        int result[];
+        int order = 0;
+        
+        while (true) {
+            
+            int count = 0;
+            
+            // progresses에 speeds 더하기
+            for (int i=order; i<speeds.length; i++) {
+                progresses[i] += speeds[i];
+            }
+            
+            // 100이 넘는 progresses 뽑아내기
+            for (int i=order; i<progresses.length; i++) {
+                
+                if (progresses[i] >= 100) {
+                    count++;
+                    order++;
+                    continue;
+                }
+                
+                break;
+            }
+            
+            // progresses가 출력되면 result 배열에 값 추가
+            if (count != 0) {
+                resultList.add(count);
+            }
+            
+            if (order == speeds.length) {
+                break;
+            }
+        }
+        
+        result = new int[resultList.size()];   
+        
+        // List를 배열로 변환
+        for (int i=0; i<resultList.size(); i++) {
+            result[i] = resultList.get(i);
+        }
+        
+        return result;
+    }
+}
