@@ -1,0 +1,45 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int bridge_length, int weight, int[] truck_weights) {
+        
+        Queue<Integer> queue = new LinkedList<>();
+        int time = 0; int nowWeight = 0; int truck = 0; int count = 0; int countR = 0;
+        
+        while (true) {
+            
+            // 트럭이 다리에 진입하는 경우
+            if (truck < truck_weights.length && nowWeight+truck_weights[truck] <= weight) {
+                ////
+                System.out.println(truck_weights[truck]);
+                
+                queue.offer(truck_weights[truck]);
+                nowWeight += truck_weights[truck];
+                truck++;
+                
+            } else {
+                queue.offer(0);
+            }
+            
+            // 트럭이 다리를 지난 경우
+            if (queue.size() == bridge_length) {
+                
+                int passedTruck = queue.poll();
+                nowWeight -= passedTruck;
+                
+                if (passedTruck == truck_weights[count]) {
+                    countR++; count++;
+                    
+                    if (countR == truck_weights.length) {
+                        time++;
+                        break;
+                    }
+                }
+            }
+                
+            time++;
+        }
+        
+        return time+1;
+    }
+}
