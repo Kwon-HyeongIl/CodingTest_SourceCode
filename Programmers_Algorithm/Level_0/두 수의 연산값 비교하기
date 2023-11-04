@@ -1,0 +1,16 @@
+class Solution {
+    public int solution(int a, int b) {
+        
+        int one = Integer.valueOf(a+""+b);
+        int two = 2*a*b;
+        
+        if (one > two) {
+            return one;
+        } else if (one < two) {
+            return two;
+        } else {
+            return one;
+        }
+
+    }
+}
