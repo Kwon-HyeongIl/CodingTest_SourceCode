@@ -8,5 +8,6 @@ class Solution {
         } else {
             return (a+b+c)*(a*a+b*b+c*c);
         }
+
     }
 }
