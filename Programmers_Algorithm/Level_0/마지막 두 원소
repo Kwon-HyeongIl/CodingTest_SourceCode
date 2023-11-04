@@ -1,0 +1,19 @@
+import java.util.*;
+import java.util.stream.*;
+
+class Solution {
+    public int[] solution(int[] num_list) {
+        
+        int index = num_list.length;
+        int finalNum = 0;
+        
+        if (num_list[index-2] < num_list[index-1]) {
+            finalNum = num_list[index-1] - num_list[index-2];
+        } else {
+            finalNum = num_list[index-1]*2;
+        }
+        
+        return IntStream.concat(Arrays.stream(num_list), IntStream.of(finalNum)).toArray();
+
+    }
+}
