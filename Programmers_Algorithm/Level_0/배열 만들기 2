@@ -1,0 +1,25 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int l, int r) {
+        
+        List<Integer> list = new ArrayList<>();
+        
+        T : for (int i=l; i<=r; i++) {
+            String num = i+"";
+
+            for (char c : num.toCharArray()) {
+                if (c!='0' && c!='5') {
+                    continue T;
+                }
+            }
+            list.add(i);
+        }
+        
+        if (list.isEmpty()) {
+            list.add(-1);
+        }
+        
+        return list.stream().mapToInt(Integer::intValue).toArray();
+    }
+}
