@@ -1,0 +1,28 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] arr, int[][] queries) {
+        
+        List<Integer> result = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
+        
+        for (int[] qr : queries) {
+            
+            for (int i=qr[0]; i<=qr[1]; i++) {
+                if (arr[i] > qr[2]) {
+                    temp.add(arr[i]);
+                }
+            }
+            
+            if (temp.isEmpty()) {
+                temp.add(-1);
+            }
+            
+            result.add(temp.stream().min(Integer::compare).get());
+            temp.clear();
+        }
+        
+        return result.stream().mapToInt(Integer::intValue).toArray();
+
+    }
+}
