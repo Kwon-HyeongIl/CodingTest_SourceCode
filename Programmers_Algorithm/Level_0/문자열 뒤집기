@@ -1,0 +1,11 @@
+class Solution {
+    public String solution(String my_string, int s, int e) {
+        
+        StringBuilder sb = new StringBuilder(my_string);
+        
+        String ss = my_string.substring(s, e+1);
+        sb.replace(s, e+1, new StringBuilder(ss).reverse().toString());
+        
+        return sb.toString();
+    }
+}
