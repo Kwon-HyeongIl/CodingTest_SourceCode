@@ -1,0 +1,15 @@
+class Solution {
+    public String solution(String my_string, int[][] queries) {
+        
+        StringBuilder sb = new StringBuilder(my_string);
+        
+        for (int[] qr : queries) {
+            String s = sb.substring(qr[0], qr[1]+1);
+            String reverse = new StringBuilder(s).reverse().toString();
+            
+            sb.replace(qr[0], qr[1]+1, reverse);
+        }
+        
+        return sb.toString();
+    }
+}
