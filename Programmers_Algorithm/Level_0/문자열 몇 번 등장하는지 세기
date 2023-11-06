@@ -1,0 +1,17 @@
+class Solution {
+    public int solution(String myString, String pat) {
+        
+        StringBuilder sb = new StringBuilder(myString);
+        int count = 0;
+        
+        for(int i=0; i<myString.length(); i++) {
+            if (sb.toString().startsWith(pat)) {
+                count++;
+            }
+            
+            sb.deleteCharAt(0);
+        }
+        
+        return count;
+    }   
+}
