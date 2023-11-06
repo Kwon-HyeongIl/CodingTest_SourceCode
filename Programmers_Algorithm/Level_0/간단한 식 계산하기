@@ -1,0 +1,20 @@
+import java.util.*;
+
+class Solution {
+    public int solution(String binomial) {
+        
+        StringTokenizer st = new StringTokenizer(binomial);
+        String a = st.nextToken();
+        String op = st.nextToken();
+        String b = st.nextToken();
+        
+        int result = switch (op) {
+                case "+" -> Integer.valueOf(a) + Integer.valueOf(b);
+                case "-" -> Integer.valueOf(a) - Integer.valueOf(b);
+                case "*" -> Integer.valueOf(a) * Integer.valueOf(b);
+                default -> 0;
+        };
+        
+        return result;
+    }
+}
