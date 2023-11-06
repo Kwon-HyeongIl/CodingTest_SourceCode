@@ -1,0 +1,12 @@
+class Solution {
+    public int solution(String num_str) {
+        
+        int result = 0;
+        
+        for (char c : num_str.toCharArray()) {
+            result += Character.getNumericValue(c);
+        }
+        
+        return result;
+    }
+}
