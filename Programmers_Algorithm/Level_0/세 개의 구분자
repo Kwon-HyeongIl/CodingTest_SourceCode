@@ -1,0 +1,19 @@
+import java.util.*;
+
+class Solution {
+    public String[] solution(String myStr) {
+
+        StringTokenizer st = new StringTokenizer(myStr, "abc");
+        List<String> list = new ArrayList<>();
+        
+        while (st.hasMoreTokens()) {
+            list.add(st.nextToken());
+        }
+        
+        if (list.isEmpty()) {
+            list.add("EMPTY");
+        }
+        
+        return list.stream().toArray(String[]::new);
+    }
+}
