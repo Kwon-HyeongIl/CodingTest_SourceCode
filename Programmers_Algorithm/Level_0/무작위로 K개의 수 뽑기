@@ -1,0 +1,31 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] arr, int k) {
+
+        List<Integer> list = new ArrayList<>();
+        
+        for (int n : arr) {
+            
+            if (list.size() == k) {
+                break;
+            }
+            
+            if (list.contains(n)) {
+                continue;
+            }
+            
+            list.add(n);
+        }
+        
+        int t = list.size();
+        
+        if (t < k) {
+            for (int i=0; i<k-t; i++) {
+                list.add(-1);
+            }
+        }
+        
+        return list.stream().mapToInt(i->i).toArray();
+    }
+}
