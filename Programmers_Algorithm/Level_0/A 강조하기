@@ -1,0 +1,17 @@
+class Solution {
+    public String solution(String myString) {
+        
+        char[] st = myString.toCharArray();
+        
+        for (int i=0; i<st.length; i++) {
+            if (st[i] == 'a' || st[i] == 'A') {
+                st[i] = Character.toUpperCase(st[i]);
+                continue;
+            }
+            
+            st[i] = Character.toLowerCase(st[i]);
+        }
+        
+        return new String(st);
+    }
+}
