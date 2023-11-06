@@ -1,0 +1,28 @@
+import java.util.*;
+import java.util.stream.*;
+
+class Solution {
+    public int[] solution(int[] arr) {
+
+        List<Integer> list = new ArrayList<>(Arrays.stream(arr).boxed().collect(Collectors.toList()));
+        int i = 1;
+        
+        while (true) {
+            
+            if (list.size() == i) {
+                break;
+            } else if (list.size() > i) {
+                i *= 2;
+            } else {
+                break;
+            }
+        }
+        
+        int size = list.size();
+        for (int k=0; k<i-size; k++) {
+            list.add(0);
+        }
+        
+        return list.stream().mapToInt(v->v).toArray();
+    }
+}
