@@ -1,0 +1,64 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int[][] maps) {
+        
+        Queue<State> queue = new LinkedList<>();
+        queue.offer(new State(0, 0, 1));
+        
+        int[][] check = new int[maps.length][maps[0].length];
+        
+        while (!queue.isEmpty()) {
+            
+            State state = queue.poll();
+            
+            // 방문했던 길인지 확인
+            if (check[state.y][state.x] == 1) {
+                continue;
+            } else {
+               check[state.y][state.x] = 1; 
+            }
+            
+            // 목적지에 도착할 경우
+            if (state.x==maps[0].length-1 && state.y==maps.length-1) {
+                return state.count;
+            }
+            
+            
+            
+            // 오른쪽으로 이동
+            if (state.x!=maps[0].length-1 && maps[state.y][state.x+1]!=0) {
+                queue.offer(new State(state.x+1, state.y, state.count+1));
+            }
+            
+            // 왼쪽으로 이동
+            if (state.x!=0 && maps[state.y][state.x-1]!=0) {
+                queue.offer(new State(state.x-1, state.y, state.count+1));
+            }
+            
+            // 아래로 이동
+            if (state.y!=maps.length-1 && maps[state.y+1][state.x]!=0) {
+                queue.offer(new State(state.x, state.y+1, state.count+1));
+            }
+            
+            // 위로 이동
+            if (state.y!=0 && maps[state.y-1][state.x]!=0) {
+                queue.offer(new State(state.x, state.y-1, state.count+1));
+            }
+        }
+        
+        return -1;
+    }
+    
+    private static class State {
+        int x;
+        int y;
+        int count;
+        
+        State(int x, int y, int count) {
+            this.x = x;
+            this.y = y;
+            this.count = count;
+        }
+    }
+}
