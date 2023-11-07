@@ -1,0 +1,75 @@
+import java.util.*;
+
+class Solution {
+    public int solution(String begin, String target, String[] words) {
+        
+        Queue<State> queue = new LinkedList<>();
+        Set<String> check = new HashSet<>();
+        queue.offer(new State(begin, 0));
+        
+        // target이 words에 없을 경우
+        List<String> list = new ArrayList<>();
+        Arrays.stream(words).forEach(list::add);
+        
+        if (!list.contains(target)) {
+            return 0;
+        }
+        
+        
+        while (!queue.isEmpty()) {
+            
+            State state = queue.poll();
+            
+            // target과 일치할 경우
+            if (state.w.equals(target)) {
+                return state.count;
+            }
+            
+            // 방문 여부 확인 및 기록
+            if (check.contains(state.w)) {
+                continue;
+            } else {
+                check.add(state.w);
+            }
+            
+            for (int i=0; i<words.length; i++) {
+                if (isDifferentOneAlphabet(state.w, words[i])) {
+                    queue.offer(new State(words[i], state.count+1));
+                }
+            }
+        }
+        
+        return 0;
+    }
+    
+    private static class State {
+        
+        String w;
+        int count;
+        
+        State(String w, int count) {
+            this.w = w;
+            this.count = count;
+        }
+    }
+    
+    // 한 알파벳만 다른 경우를 확인하는 메서드
+    private static boolean isDifferentOneAlphabet (String a, String b) {
+        
+        int num = 0;
+        char[] stringA = a.toCharArray();
+        char[] stringB = b.toCharArray();
+        
+        for (int k=0; k<stringA.length; k++) {
+            if (stringA[k] != stringB[k]) {
+                num++;
+            }
+        }
+        
+        if (num == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
