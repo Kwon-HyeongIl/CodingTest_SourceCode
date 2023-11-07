@@ -1,0 +1,44 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int n, int[][] computers) {
+
+        Stack<Integer> stack = new Stack<>();
+        boolean[] check = new boolean[n];
+        int count = 0;
+        
+        T : for (int i=0; i<n; i++) {
+            
+            if (check[i] == true) {
+                continue;
+            }
+            
+            stack.push(i);
+            
+            while (!stack.isEmpty()) {
+                
+                int num = stack.pop();
+                
+                // 방문 배열이면 continue
+                if (check[num] == true) {
+                    continue;
+
+                } else {
+                    check[num] = true;
+                }
+                
+                // 연결된 네트워크 추적
+                for (int k=0; k<n; k++) {
+                    if (num!=k && computers[num][k] == 1) {
+                        stack.push(k);
+                    }
+                }
+            }
+            
+            count++;
+            stack.clear();
+        }
+        
+        return count;
+    }
+}
