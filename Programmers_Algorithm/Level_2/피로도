@@ -1,0 +1,32 @@
+import java.util.*;
+
+class Solution {
+    
+    static List<Integer> routeCount;
+    static boolean[] visited;
+    
+    public int solution(int k, int[][] dungeons) {
+        
+        routeCount = new ArrayList<>();
+        visited = new boolean[dungeons.length];
+        
+        dfs (k, dungeons, 0);
+            
+        return routeCount.stream().mapToInt(i->i).max().getAsInt();
+    }
+    
+    private static void dfs (int tired, int[][] dungeons, int count) {
+        
+        for (int i=0; i<dungeons.length; i++) {
+            
+            if (dungeons[i][0] <= tired && !visited[i]) {
+                
+                visited[i] = true;
+                dfs (tired-dungeons[i][1], dungeons, count+1);
+                visited[i] = false;
+            }
+        }
+        
+        routeCount.add(count);
+    }
+}
