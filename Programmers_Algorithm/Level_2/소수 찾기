@@ -1,0 +1,57 @@
+import java.util.*;
+
+class Solution {
+    
+    static int count;
+    static boolean[] visited;
+    static Set<Integer> set;
+    
+    public int solution(String numbers) {
+        
+        char[] array = numbers.toCharArray();
+        visited = new boolean[array.length];
+        set = new HashSet<>();
+        
+        dfs("0", array);
+        
+        return count;
+    }
+    
+    private static void dfs (String acc, char[] array) {
+        
+        if (!set.contains(Integer.valueOf(acc)) && isPrime(Integer.valueOf(acc))) {
+            count++;
+            set.add(Integer.valueOf(acc));
+        }
+        
+        System.out.println(acc);
+        
+        for (int i=0; i<array.length; i++) {
+            if (!visited[i]) {
+                
+                visited[i] = true;
+                dfs (acc+array[i], array);
+                
+                visited[i] = false;
+            }
+        }
+        
+    }
+    
+    private static boolean isPrime (int num) {
+        
+        if (num < 2) {
+            return false;
+        }
+        
+        for (int i=2; i<=Math.sqrt(num); i++) {
+            
+            // 소수가 아닐 때
+            if (num%i == 0) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+}
