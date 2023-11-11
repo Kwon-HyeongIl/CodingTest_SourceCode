@@ -2,7 +2,7 @@ import java.io.*;
 
 public class CountFiles {
     public static void main(String[] args) throws IOException {
-        String[] directories = {"프로그래머스", "백준"};
+        String[] directories = {"Programmers_Algorithm", "Baekjoon_Algorithm"};
         File readme = new File("README.md");
         StringBuilder newReadme = new StringBuilder();
 
