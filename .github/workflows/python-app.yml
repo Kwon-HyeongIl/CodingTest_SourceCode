@@ -31,6 +31,6 @@ jobs:
         git add .
         git diff
         git config --local user.email "llioopv@naver.com"
-        git config --local user.name "권형일"
+        git config --local user.name "Kwon-HyeongIl"
         git commit -m "Automatically Update README.md file"
         git push
