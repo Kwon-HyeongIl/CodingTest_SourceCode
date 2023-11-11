@@ -1,0 +1,23 @@
+name: Update README
+
+on:
+  push:
+    paths:
+      - 'Programmers_Algorithm/**'
+      - 'BaekJoon_Algorithm/**'
+      - 'README.md'
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Java Program
+        run: javac CountFiles.java && java CountFiles
+      - name: Commit and Push if README changed
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          git add README.md
+          git diff --staged --exit-code || git commit -m "Update README with file counts"
+          git push
