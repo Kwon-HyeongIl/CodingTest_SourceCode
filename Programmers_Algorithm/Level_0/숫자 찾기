@@ -1,0 +1,15 @@
+class Solution {
+    public int solution(int num, int k) {
+        
+        int i=1;
+        for (char c : String.valueOf(num).toCharArray()) {
+            if (Character.getNumericValue(c) == k) {
+                return i;
+            }
+            
+            i++;
+        }
+        
+        return -1;
+    }
+}
