@@ -1,0 +1,20 @@
+import java.util.*;
+
+class Solution {
+    public int solution(String[] s1, String[] s2) {
+        
+        int count = 0;
+        
+        List<String> list = new ArrayList<>();
+        Arrays.stream(s2).forEach(i->list.add(i));
+        
+        
+        for (String s : s1) {
+            if (list.contains(s)) {
+                count++;
+            }
+        }
+        
+        return count;
+    }
+}
