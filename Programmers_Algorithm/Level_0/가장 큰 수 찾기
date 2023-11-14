@@ -1,0 +1,15 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] array) {
+
+        int[] result = new int[2];
+        List<Integer> list = new ArrayList<>();
+        Arrays.stream(array).forEach(i->list.add(i));
+        
+        result[0] = list.stream().mapToInt(o->o).max().getAsInt();
+        result[1] = list.indexOf((Integer) result[0]);
+        
+        return result;
+    }
+}
