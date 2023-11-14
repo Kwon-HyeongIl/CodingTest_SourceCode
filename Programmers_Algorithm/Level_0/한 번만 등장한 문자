@@ -1,0 +1,28 @@
+import java.util.*;
+
+class Solution {
+    public String solution(String s) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        T : for (char c : s.toCharArray()) {
+            int count = 0;
+            
+            for (char d : s.toCharArray()) {
+                if (c == d) {
+                    count++;
+                }
+                if (count == 2) {
+                    continue T;
+                }
+            }
+            
+            sb.append(c);
+        }
+        
+        char[] arr = sb.toString().toCharArray();
+        Arrays.sort(arr);
+        
+        return new String(arr);
+    }
+}
