@@ -1,0 +1,21 @@
+class Solution {
+    public int[] solution(int numer1, int denom1, int numer2, int denom2) {
+        
+        int sumNumer = numer1*denom2 + numer2*denom1;
+        int denom = denom1*denom2;
+        
+        int t = 2;
+        
+        while (t <= Math.min(sumNumer, denom)) {
+            if (sumNumer%t==0 && denom%t==0) {
+                sumNumer /= t;
+                denom /= t;
+                t=2;
+                continue;
+            }
+            t++;
+        }
+        
+        return new int[] {sumNumer, denom};
+    }
+}
