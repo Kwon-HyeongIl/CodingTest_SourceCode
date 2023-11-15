@@ -1,0 +1,26 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int[] sides) {
+        
+        int max = Arrays.stream(sides).max().getAsInt();
+        
+        int otherSum = 0; int check = 0;
+        
+        for (int num : sides) {
+            if (check==0 && num==max) {
+                check = 1;
+                continue;
+            }
+            
+            otherSum += num;
+        }
+        
+        if (max < otherSum) {
+            return 1;
+        } else {
+            return 2;
+        }
+
+    }
+}
