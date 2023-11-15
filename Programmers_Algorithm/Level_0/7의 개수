@@ -1,0 +1,18 @@
+class Solution {
+    public int solution(int[] array) {
+        
+        int count = 0;
+        
+        for (int num : array) {
+            String temp = num+"";
+            
+            for (char c : temp.toCharArray()) {
+                if (c == '7') {
+                    count++;
+                }
+            }
+        }
+        
+        return count;
+    }
+}
