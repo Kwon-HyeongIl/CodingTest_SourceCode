@@ -1,0 +1,18 @@
+class Solution {
+    public int solution(int[] array, int n) {
+        
+        int result = 0; int diff = 10000;
+        
+        for (int num : array) {
+            int tempDiff = Math.abs(n-num);
+            if (tempDiff < diff) {
+                result = num;
+                diff = tempDiff;
+            } else if (tempDiff == diff) {
+                result = Math.min(result, num);
+            }
+        }
+        
+        return result;
+    }
+}
