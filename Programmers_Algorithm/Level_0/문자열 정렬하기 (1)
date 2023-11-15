@@ -1,0 +1,16 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(String my_string) {
+
+        List<Integer> list = new ArrayList<>();
+        
+        for (char c : my_string.toCharArray()) {
+            if (c>='0' && c<='9') {
+                list.add(Character.getNumericValue(c));
+            }
+        }
+        
+        return list.stream().mapToInt(o->o).sorted().toArray();
+    }
+}
