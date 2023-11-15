@@ -1,0 +1,16 @@
+class Solution {
+    public int solution(int i, int j, int k) {
+        
+        int count = 0;
+        
+        for (int o=i; o<=j; o++) {
+            for(char c : String.valueOf(o).toCharArray()) {
+                if (Character.getNumericValue(c) == k) {
+                    count++;
+                }
+            }
+        }
+        
+        return count; 
+    }
+}
