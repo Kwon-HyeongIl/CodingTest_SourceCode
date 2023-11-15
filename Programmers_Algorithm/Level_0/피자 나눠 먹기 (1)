@@ -1,0 +1,12 @@
+class Solution {
+    public int solution(int n) {
+        
+        int temp = n/7;
+        
+        if (n%7 > 0) {
+            temp++;
+        }
+        
+        return temp;
+    }
+}
