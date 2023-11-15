@@ -1,0 +1,10 @@
+class Solution {
+    public String solution(String bin1, String bin2) {
+        
+        int one = Integer.valueOf(bin1, 2);
+        int two = Integer.valueOf(bin2, 2);
+        
+        return Integer.toString(one+two, 2);
+
+    }
+}
