@@ -1,0 +1,17 @@
+class Solution {
+    public int solution(String my_string) {
+        
+        int sum = 0;
+        
+        String[] arr = my_string.split("[^0-9]+");
+        
+        for (String s : arr) {
+            
+            if (s.length() > 0) {
+                sum += Integer.valueOf(s);
+            }
+        }
+        
+        return sum;
+    }
+}
