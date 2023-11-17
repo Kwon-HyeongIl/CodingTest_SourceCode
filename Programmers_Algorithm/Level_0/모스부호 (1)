@@ -1,0 +1,19 @@
+class Solution {
+    public String solution(String letter) {
+        
+        String[] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        
+        StringBuilder sb = new StringBuilder();
+        String[] arr = letter.split(" ");
+        
+        for (String s : arr) {
+            for (int i=0; i<morse.length; i++) {
+                if (s.equals(morse[i])) {
+                    sb.append((char)('a'+i));
+                }
+            }
+        }
+        
+        return sb.toString();
+    }
+}
