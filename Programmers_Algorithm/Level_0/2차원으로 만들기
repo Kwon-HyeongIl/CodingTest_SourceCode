@@ -1,0 +1,20 @@
+class Solution {
+    public int[][] solution(int[] num_list, int n) {
+        
+        int[][] result = new int[num_list.length/n][n];
+        
+        int t = 0, k = 0;
+        for (int i=1; i<=num_list.length; i++) {
+            result[t][k] = num_list[i-1];
+            k++;
+        
+            if (i%n == 0) {
+                t++;
+                k = 0;
+            }
+        }
+        
+        return result;
+
+    }
+}
