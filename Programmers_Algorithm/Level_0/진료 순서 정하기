@@ -1,0 +1,22 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] emergency) {
+        
+        List<Integer> list = new ArrayList<>();
+        int[] resultArr = new int[emergency.length];
+        
+        Arrays.stream(emergency).forEach(list::add);
+        
+        Arrays.sort(emergency);
+        int i = emergency.length;
+        
+        for (int num : emergency) {
+            int index = list.indexOf(num);
+            resultArr[index] = i;
+            i--;
+        }
+        
+        return resultArr;
+    }
+}
