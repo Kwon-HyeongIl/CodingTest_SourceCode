@@ -1,0 +1,22 @@
+class Solution {
+    public int solution(int[] numbers, int k) {
+        
+        int result = 0;
+        int turn = 0;
+        
+        for (int i=1; i<=k; i++) {
+            
+            if (i == k) {
+                return numbers[turn];
+            }
+            
+            turn += 2;
+            
+            if (turn >= numbers.length) {
+                turn -= numbers.length;
+            }
+        }
+        
+        return 0;
+    }
+}
