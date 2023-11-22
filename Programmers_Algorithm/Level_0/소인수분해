@@ -1,0 +1,28 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int n) {
+        
+        List<Integer> visited = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
+        
+        T : for (int i=2; i<=n; i++) {
+            
+            if (n%i==0) {
+                for (int j=2; j<i; j++) {
+                    if (i%j == 0) {
+                        continue T;
+                    }
+                }
+                
+                if (!visited.contains(i)) {
+                    visited.add(i);
+                    result.add(i);
+                }
+            }
+        }
+        
+        return result.stream().mapToInt(o->o).sorted().toArray();
+
+    }
+}
