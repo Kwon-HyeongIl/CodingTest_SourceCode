@@ -1,0 +1,23 @@
+class Solution {
+    public int solution(String[] spell, String[] dic) {
+        
+        for (int i=0; i<dic.length; i++) {
+            
+            int tempCount = 0;
+            
+            for (int j=0; j<spell.length; j++) {
+                if (dic[i].contains(spell[j])) {
+                    tempCount++;
+                }
+            }
+            
+            if (tempCount == spell.length) {
+                return 1;
+            } else {
+                tempCount = 0;
+            }
+        }
+        
+        return 2;
+    }
+}
