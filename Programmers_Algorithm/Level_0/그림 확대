@@ -1,0 +1,32 @@
+import java.util.*;
+
+class Solution {
+    public String[] solution(String[] picture, int k) {
+
+        List<String> list = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        
+        // 기존의 횟수만 반복
+        for (int i=0; i<picture.length; i++) {
+            
+            char[] arr = picture[i].toCharArray();
+            
+            // 가로로 확장된 한 줄 생성
+            for (int u=0; u<arr.length; u++) {
+                
+                for (int j=0; j<k; j++) {
+                    sb.append(arr[u]);
+                }
+            }
+
+            // k배 만큼 세로로 확장
+            for (int u=0; u<k; u++) {
+                list.add(sb.toString());
+            }
+            
+            sb.setLength(0);
+        }
+        
+        return list.stream().toArray(String[]::new);
+    }
+}
