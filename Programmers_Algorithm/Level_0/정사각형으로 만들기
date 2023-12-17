@@ -1,0 +1,62 @@
+import java.util.*;
+
+class Solution {
+    public int[][] solution(int[][] arr) {
+        
+        int row = arr.length;
+        int column = arr[0].length;
+        
+        List<Integer>[] list = new ArrayList[row];
+        
+        for (int i=0; i<row; i++) {
+            list[i] = new ArrayList<>();
+            
+            for (int j=0; j<arr[i].length; j++) {
+                list[i].add(arr[i][j]);
+            }
+        }
+        
+        if (row > column) {
+            
+            // list 개조
+            for (int i=0; i<row; i++) {
+                for (int j=0; j<row-column; j++) {
+                    list[i].add(0);
+                }
+            }
+            
+            // list를 배열로 변환
+            int[][] newArr = new int[row][column+(row-column)];
+            
+            for (int i=0; i<row; i++) {
+                for (int j=0; j<list[i].size(); j++) {
+                    newArr[i][j] = list[i].get(j);
+                }
+            }
+            
+            return newArr;
+            
+        } else if (row < column) {
+            
+            int[][] newArr = new int[row+(column-row)][column];
+            
+            for (int i=0; i<row; i++) {
+                for (int j=0; j<list[i].size(); j++) {
+                    newArr[i][j] = list[i].get(j);
+                }
+            }
+            
+            for (int i=row; i<newArr.length; i++) {
+                for (int j=0; j<list[0].size(); j++) {
+                    newArr[i][j] = 0;
+                }
+            }
+            
+            return newArr;
+            
+        } else {
+            return arr;
+        }
+
+    }
+}
