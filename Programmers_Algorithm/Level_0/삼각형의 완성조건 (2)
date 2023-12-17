@@ -1,0 +1,23 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int[] sides) {
+        
+        int count = 0;
+        
+        int prevBig = Math.max(sides[0], sides[1]);
+        int prevSmall = Math.min(sides[0], sides[1]);
+        
+        int temp = prevBig - prevSmall + 1;
+        
+        while (true) {
+            if (temp+prevSmall>prevBig && temp<prevSmall+prevBig) {
+                temp++;
+                count++;
+                continue;
+            }
+            
+            return count;
+        }
+    }
+}
