@@ -1,0 +1,36 @@
+class Solution {
+    public int solution(int n) {
+        
+        int convertNum = 0;
+        
+        for (int i=1; i<=100; i++) {
+            
+            convertNum++;
+            
+            T : while (true) {
+                
+                // 3의 배수인 경우
+                if (convertNum%3 == 0) {
+                convertNum++;
+                }
+                
+                // 3이 포함된 경우
+                for (char c : String.valueOf(convertNum).toCharArray()) {
+                    if (c == '3') {
+                        convertNum++;
+                        continue T;
+                    }
+                }
+                
+                break;
+            }
+            
+            if (i == n) {
+                break;
+            }
+        
+        }
+        
+        return convertNum;
+    }
+}
