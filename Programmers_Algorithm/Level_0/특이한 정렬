@@ -1,0 +1,35 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] numlist, int n) {
+        
+        List<Integer> list = new ArrayList<>();
+        Arrays.stream(numlist).forEach(list::add);
+        
+        int count = list.size();
+        int up = n;
+        int down = n;
+        
+        List<Integer> resultList = new ArrayList<>();
+        
+        if (list.contains(n)) {
+            resultList.add(n);
+            count--;
+        }
+        
+        while (count!=0) {
+            
+            if (list.contains(++up)) {
+                resultList.add(up);
+                count--;
+            }
+            
+            if (list.contains(--down)) {
+                resultList.add(down);
+                count--;
+            }
+        }
+        
+        return resultList.stream().mapToInt(o->o).toArray();
+    }
+}
