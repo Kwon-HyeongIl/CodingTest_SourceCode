@@ -1,0 +1,42 @@
+class Solution {
+    public String solution(String polynomial) {
+        
+        int xNum = 0;
+        int num = 0;
+        
+        for (String c : polynomial.split(" ")) {
+            
+            // x 연산
+            if (c.contains("x")) {
+                
+                if (c.length() != 1) {
+                    xNum += Integer.valueOf(c.replace("x", ""));
+                } else {
+                    xNum += 1;
+                }
+            
+            // 상수 연산
+            } else if (!c.contains("+")) {
+                num += Integer.valueOf(c);
+            }
+        }
+        
+        if (xNum>0 && num>0) {
+            
+            if (xNum == 1) {
+                return "x + "+num;
+            }
+            return xNum+"x + "+num;
+            
+        } else if (xNum>0) {
+            
+            if (xNum == 1) {
+                return "x";
+            }
+            return xNum+"x";
+            
+        } else {
+            return num+"";
+        }
+    }
+}
