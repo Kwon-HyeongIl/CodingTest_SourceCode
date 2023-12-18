@@ -1,0 +1,19 @@
+class Solution {
+    public int solution(int chicken) {
+        
+        int totalCount = 0;
+        
+        while (true) {
+            if (chicken < 10) {
+                break;
+            }
+            
+            totalCount += chicken/10;
+            int temp = chicken % 10;
+            chicken /= 10;
+            chicken += temp;
+        }
+        
+        return totalCount;
+    }
+}
