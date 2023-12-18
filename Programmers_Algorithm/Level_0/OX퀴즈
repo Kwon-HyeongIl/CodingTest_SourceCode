@@ -1,0 +1,30 @@
+import java.util.*;
+
+class Solution {
+    public String[] solution(String[] quiz) {
+        
+        List<String> list = new ArrayList<>();
+        
+        for (String s : quiz) {
+            
+            String[] tempList = s.split(" ");
+            
+            int calNum = 0;
+            
+            if (tempList[1].equals("+")) {
+                calNum = Integer.valueOf(tempList[0]) + Integer.valueOf(tempList[2]);
+            } else {
+                calNum = Integer.valueOf(tempList[0]) - Integer.valueOf(tempList[2]);
+            }
+            
+            if ((calNum+"").equals(tempList[4])) {
+                list.add("O");
+            } else {
+                list.add("X");
+            }
+        }
+        
+        return list.stream().toArray(String[]::new);
+
+    }
+}
