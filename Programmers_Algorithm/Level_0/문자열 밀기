@@ -1,0 +1,22 @@
+class Solution {
+    public int solution(String A, String B) {
+        
+        StringBuilder sb = new StringBuilder(A);
+        int count = 0;
+        
+        while (true) {
+            
+            if (sb.toString().equals(B)) {
+                return count;
+            } else if (count>0 && sb.toString().equals(A)) {
+                return -1;
+            }
+            
+            char lastChar = sb.charAt(sb.length()-1);
+            sb.insert(0, lastChar);
+            sb.deleteCharAt(sb.length()-1);
+            
+            count++;
+        }
+    }
+}
