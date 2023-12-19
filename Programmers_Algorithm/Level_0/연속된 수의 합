@@ -1,0 +1,39 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int num, int total) {
+        
+        List<Integer> resultList = new ArrayList<>();
+        int maxNum = total;
+        
+        while (true) {
+            
+            // total이 0인데, num이 3이상인 경우
+            if (total==0 && num>=3) {
+                for (int i=-num/2; i<=num/2; i++) {
+                    resultList.add(i);
+                }
+                break;
+            }
+            
+            // 나머지 경우
+            int tempSum = 0;
+            
+            for (int i=maxNum-num+1; i<=maxNum; i++) {
+                tempSum += i;
+            }
+            
+            if (tempSum == total) {
+               for (int i=maxNum-num+1; i<=maxNum; i++) {
+                    resultList.add(i);          
+                } 
+                
+                break;
+            }
+            
+            maxNum--;
+        }
+        
+        return resultList.stream().mapToInt(o->o).toArray();
+    }
+}
