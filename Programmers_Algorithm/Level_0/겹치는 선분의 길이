@@ -1,0 +1,26 @@
+class Solution {
+    public int solution(int[][] lines) {
+        int[] arr = new int[201];
+        
+        for (int[] temp : lines) {
+            for (int i=temp[0]; i<temp[1]; i++) {
+                arr[i+100]++;
+            }
+        }
+        
+        int count = 0;
+        
+        for (int i=0; i<arr.length; i++) {
+            if (arr[i] >= 2) {
+                count++;
+            }
+        }
+        
+        return count;
+    }
+}
+
+/* 
+1. 배열에 각 선분의 길이 내에 있는 모든 원소의 값을 1 증가 (인덱스 end 미포함)(배열 인덱스 offset 값 100)
+2. 2 이상인 값을 가지는 배열의 값만 카운트
+*/
