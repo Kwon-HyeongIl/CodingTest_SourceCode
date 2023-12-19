@@ -1,0 +1,72 @@
+class Solution {
+    public int[][] solution(int n) {
+        
+        int[][] answer = new int[n][n];
+        int index = 1;
+        int row = 0;
+        int column = 0;
+        
+        if (n == 1) {
+            answer[0][0] = 1;
+            return answer;
+        }
+        
+        T: while (true) {
+            
+            // 오른쪽으로 이동
+            while (true) {
+                
+                if (column!=n-1 && answer[row][column+1]!=0 && answer[row+1][column]!=0) {
+                    answer[row][column] = index;
+                    break T;
+                } else if (column==n-1 || answer[row][column+1]!=0) {
+                    break;
+                }
+                
+                answer[row][column++] = index++;
+            }
+            
+            // 아래로 이동
+            while (true) {
+                
+                if (row!=n-1 && answer[row+1][column]!=0 && answer[row][column-1]!=0) {
+                    answer[row][column] = index;
+                    break T;
+                } else if (row==n-1 || answer[row+1][column]!=0) {
+                    break;
+                }
+                
+                answer[row++][column] = index++;
+            }
+            
+            // 왼쪽으로 이동
+            while (true) {
+                
+                if (column!=0 && answer[row][column-1]!=0 && answer[row-1][column]!=0) {
+                    answer[row][column] = index;
+                    break T;
+                } else if (column==0 || answer[row][column-1]!=0) {
+                    break;
+                }
+                
+                
+                answer[row][column--] = index++;
+            }
+            
+            // 위로 이동
+            while (true) {
+                
+                if (row!=0 && answer[row-1][column]!=0 && answer[row][column+1]!=0) {
+                    answer[row][column] = index;
+                    break T;
+                } else if (row==0 || answer[row-1][column]!=0) {
+                    break;
+                }
+                
+                answer[row--][column] = index++;
+            }
+        }
+        
+        return answer;
+    }
+}
