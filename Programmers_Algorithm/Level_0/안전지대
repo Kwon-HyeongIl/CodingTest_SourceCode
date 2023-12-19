@@ -1,0 +1,83 @@
+class Solution {
+    public int solution(int[][] board) {
+        
+        int len = board.length;
+        
+        for (int i=0; i<len; i++) {
+            for (int j=0; j<len; j++) {
+                
+                if (board[i][j] == 1) {
+                    
+                    // 왼쪽이 있을 경우
+                    if (j != 0) {
+                        if (board[i][j-1] != 1) {
+                            board[i][j-1] = 2;
+                        }
+                    }
+                    
+                    // 오른쪽이 있을 경우
+                    if (j != len-1) {
+                        if (board[i][j+1] != 1) {
+                            board[i][j+1] = 2;
+                        }
+                    }
+                    
+                    // 위쪽이 있을 경우
+                    if (i != 0) {
+                        if (board[i-1][j] != 1) {
+                            board[i-1][j] = 2;
+                        }
+                    }
+                    
+                    // 아래쪽이 있을 경우
+                    if (i != len-1) {
+                        if (board[i+1][j] != 1) {
+                            board[i+1][j] = 2;
+                        }
+                    }
+                    
+                    // 왼쪽 위가 있을 경우
+                    if (j!=0 && i!=0) {
+                        if (board[i-1][j-1] != 1) {
+                            board[i-1][j-1] = 2;
+                        }
+                    }
+                    
+                    // 오른쪽 위가 있을 경우
+                    if (j!=len-1 && i!=0) {
+                        if (board[i-1][j+1] != 1) {
+                            board[i-1][j+1] = 2;
+                        }
+                    }
+                    
+                    // 왼쪽 아래가 있을 경우
+                    if (j!=0 && i!=len-1) {
+                        if (board[i+1][j-1] != 1) {
+                            board[i+1][j-1] = 2;
+                        }
+                    }
+                    
+                    // 오른쪽 아래가 있을 경우 
+                    if (j!=len-1 && i!=len-1) {
+                        if (board[i+1][j+1] != 1) {
+                            board[i+1][j+1] = 2;
+                        }
+                    }
+                    
+                }
+            }
+        }
+        
+        int safeCount = 0;
+        
+        for (int i=0; i<len; i++) {
+            for (int j=0; j<len; j++) {
+                if (board[i][j] == 0) {
+                    safeCount++;
+                }
+            }
+        }
+        
+        return safeCount;
+    }
+}
