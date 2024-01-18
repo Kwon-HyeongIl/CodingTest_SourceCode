@@ -1,0 +1,32 @@
+import java.util.*;
+
+class Solution {
+    public int solution(String[] babbling) {
+        int count = 0;
+        
+        String[] words = new String[]{"aya", "ye", "woo", "ma"};
+        
+        for (String s : babbling) {
+            
+            T : while (true) {
+                
+                for (String bab : words) {
+                    
+                    if (s.length() == 0) {
+                        count++;
+                        break T;
+                    }
+                    
+                    if (s.startsWith(bab)) {
+                        s = s.substring(bab.length());
+                        continue T;
+                    }
+                }
+                
+                break;
+            }
+        }
+        
+        return count;
+    }
+}
