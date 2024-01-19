@@ -1,0 +1,20 @@
+import java.math.*;
+
+class Solution {
+    public int solution(int balls, int share) {
+        
+        return factorial(balls).divide((factorial(balls-share).multiply(factorial(share)))).intValue();
+
+    }
+    
+    private BigInteger factorial(int num) {
+        
+        BigInteger bigNum = new BigInteger("1");
+        
+        for (int i=num; i>1; i--) {
+            bigNum = bigNum.multiply(BigInteger.valueOf(i));
+        }
+        
+        return bigNum;
+    }
+}
