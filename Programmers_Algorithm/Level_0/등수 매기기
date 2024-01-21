@@ -3,37 +3,20 @@ import java.util.*;
 class Solution {
     public int[] solution(int[][] score) {
         
-
-        List<Double> averageList = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
         
-        for (int i=0; i<score.length; i++) {
-            double average = (score[i][0] + score[i][1])/2.0;
-            averageList.add(average);
+        for (int[] sc : score) {
+            list.add(sc[0] + sc[1]);
         }
         
-        double rankCount = 1;
-        int boolCount = 0;
-        boolean[] checked = new boolean[averageList.size()];
+        list.sort(Comparator.reverseOrder());
         
-        for (int i=1000; i>=0; i--) {
-            for (int k=0; k<averageList.size(); k++) {
-                
-                if ((i/10.0)==averageList.get(k) && boolCount==0 && !checked[k]) {
-                    averageList.set(k, rankCount);
-                    checked[k] = true;
-                    boolCount++;
-                    
-                } else if ((i/10.0)==averageList.get(k) && boolCount!=0 && !checked[k]) {
-                    averageList.set(k, rankCount);
-                    checked[k] = true;
-                    boolCount++;
-                }
-            }
-            
-            rankCount += boolCount;
-            boolCount = 0;
+        int[] result = new int[score.length];
+        
+        for (int i=0; i<result.length; i++) {
+            result[i] = list.indexOf(score[i][0] + score[i][1]) + 1;
         }
         
-        return averageList.stream().mapToInt(Double::intValue).toArray();
+        return result;
     }
 }
