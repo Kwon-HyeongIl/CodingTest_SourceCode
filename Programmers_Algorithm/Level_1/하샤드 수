@@ -1,0 +1,17 @@
+class Solution {
+    public boolean solution(int x) {
+        
+        char[] arr = String.valueOf(x).toCharArray();
+        
+        int sum = 0;
+        for (char c : arr) {
+            sum += Character.getNumericValue(c);
+        }
+        
+        if (x%sum == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
