@@ -4,7 +4,6 @@ class Solution {
     public long solution(long n) {
         
         char[] arr = String.valueOf(n).toCharArray();
-        
         List<Integer> list = new ArrayList<>();
         
         for (char c : arr) {
