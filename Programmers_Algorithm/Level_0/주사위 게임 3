@@ -1,0 +1,51 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int a, int b, int c, int d) {
+        
+        // 1번째 조건
+        if (a==b && b==c && c==d) {
+            return 1111*a;
+            
+        // 2번째 조건
+        } else if (a==b && b==c && c!=d) {
+            return (10*a+d)*(10*a+d);
+        } else if (a==b && b==d && c!=d) {
+            return (10*a+c)*(10*a+c);
+        } else if (a==c && c==d && d!=b) {
+            return (10*a+b)*(10*a+b);
+        } else if (b==c && c==d && a!=d) {
+            return (10*d+a)*(10*d+a);
+            
+        // 3번째 조건
+        } else if (a==b && b!=c && c==d) {
+            return (a+c)*Math.abs(a-c);
+        } else if (a==c && c!=b && b==d) {
+            return (a+b)*Math.abs(a-b);
+        } else if (a==d && a!=b && b==c) {
+            return (a+b)*Math.abs(a-b);
+            
+                
+        // 4번째 조건
+        } else if (a==b && b!=c && c!=d) {
+            return c*d;
+        } else if (a==c && c!=b && b!=d) {
+            return b*d;
+        } else if (a==d && d!=c && b!=c) {
+            return b*c;
+        } else if (b==c && a!=b && a!=d) {
+            return a*d;
+        } else if (b==d && b!=c && c!=a) {
+            return a*c;
+        } else if (c==d && b!=c && a!=b) {
+            return a*b;
+            
+        // 5번째 조건    
+        } else if (a!=b && b!=c && c!=d) {
+            int[] arr = new int[] {a, b, c, d};
+            return Arrays.stream(arr).min().getAsInt();
+        }
+        
+        return 0;
+    }
+}
