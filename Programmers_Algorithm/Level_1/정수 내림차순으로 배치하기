@@ -1,0 +1,24 @@
+import java.util.*;
+
+class Solution {
+    public long solution(long n) {
+        
+        char[] arr = String.valueOf(n).toCharArray();
+        
+        List<Integer> list = new ArrayList<>();
+        
+        for (char c : arr) {
+            list.add(Character.getNumericValue(c));
+        }
+        
+        list.sort(Comparator.reverseOrder());
+        
+        StringBuilder sb = new StringBuilder();
+        
+        for (int num : list) {
+            sb.append(num);
+        }
+        
+        return Long.valueOf(sb.toString());
+    }
+}
