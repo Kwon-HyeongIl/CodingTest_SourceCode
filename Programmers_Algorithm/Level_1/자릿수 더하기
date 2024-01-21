@@ -1,0 +1,15 @@
+import java.util.*;
+
+public class Solution {
+    public int solution(int n) {
+        
+        char[] arr = String.valueOf(n).toCharArray();
+        
+        int sum = 0;
+        for (char num : arr) {
+            sum += Character.getNumericValue(num);
+        }
+
+        return sum;
+    }
+}
