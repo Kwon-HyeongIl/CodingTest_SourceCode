@@ -1,0 +1,22 @@
+class Solution {
+    public long solution(int a, int b) {
+        
+        long sum = 0;
+        int bigNum = 0;
+        int smallNum = 0;
+        
+        if (a > b) {
+            bigNum = a;
+            smallNum = b;
+        } else {
+            bigNum = b;
+            smallNum = a;
+        }
+        
+        for (int i=smallNum; i<=bigNum; i++) {
+            sum += i;
+        }
+        
+        return sum;
+    }
+}
