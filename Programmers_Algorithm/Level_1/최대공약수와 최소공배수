@@ -1,0 +1,23 @@
+class Solution {
+    public int[] solution(int n, int m) {
+    
+        int a = 0;
+        int min = Math.min(n, m);
+        for (int i=min; i>0; i--) {
+            if (n%i==0 && m%i==0) {
+                a = i;
+                break;
+            } 
+        }
+            
+        int b = 0;
+        for (int i=1; i<=1000000; i++) {
+            if (i%n==0 && i%m==0) {
+                b = i;
+                break;
+            }
+        }
+        
+        return new int[] {a, b};
+    }
+}
