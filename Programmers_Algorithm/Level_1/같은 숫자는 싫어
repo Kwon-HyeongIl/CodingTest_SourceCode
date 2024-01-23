@@ -1,0 +1,18 @@
+import java.util.*;
+
+public class Solution {
+    public int[] solution(int []arr) {
+        
+        List<Integer> list = new ArrayList<>();
+        
+        int beforeNum = -1;
+        for (int num : arr) {
+            if (num != beforeNum) {
+                list.add(num);
+                beforeNum = num;
+            }
+        }
+        
+        return list.stream().mapToInt(o->o).toArray();
+    }
+}
