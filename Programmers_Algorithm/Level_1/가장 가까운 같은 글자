@@ -1,0 +1,23 @@
+class Solution {
+    public int[] solution(String s) {
+        
+        char[] wordArr = s.toCharArray();
+        int[] result = new int[wordArr.length];
+        
+        T : for (int i=wordArr.length-1; i>=0; i--) {
+            
+            int length = 0;
+            for (int k=i-1; k>=0; k--) {
+                length++;
+                if (wordArr[i] == wordArr[k]) {
+                    result[i] = length;
+                    continue T;
+                }
+            }
+            
+            result[i] = -1;
+        }
+        
+        return result;
+    }
+}
