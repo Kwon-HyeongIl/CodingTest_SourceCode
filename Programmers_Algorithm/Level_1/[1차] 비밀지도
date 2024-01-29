@@ -1,0 +1,59 @@
+import java.util.*;
+
+class Solution {
+    public String[] solution(int n, int[] arr1, int[] arr2) {
+        
+        List<String> arr1List = new ArrayList<>();
+        List<String> arr2List = new ArrayList<>();
+        
+        for (int num : arr1) {
+            String twoRadix = Integer.toString(num, 2);
+            
+            if (twoRadix.length() != n) {
+                StringBuilder sb = new StringBuilder(twoRadix);
+                for (int i=0; i<n-twoRadix.length(); i++) {
+                    sb.insert(0, '0');
+                }
+                arr1List.add(sb.toString());
+                sb.setLength(0);
+                continue;
+            }
+            
+            arr1List.add(twoRadix);
+        }
+        
+        for (int num : arr2) {
+            String twoRadix = Integer.toString(num, 2);
+            
+            if (twoRadix.length() != n) {
+                StringBuilder sb = new StringBuilder(twoRadix);
+                for (int i=0; i<n-twoRadix.length(); i++) {
+                    sb.insert(0, '0');
+                }
+                arr2List.add(sb.toString());
+                sb.setLength(0);
+                continue;
+            }
+            
+            arr2List.add(twoRadix);
+        }
+        
+        String[] result = new String[n];
+        for (int i=0; i<n; i++) {
+            StringBuilder sb = new StringBuilder();
+            
+            for (int k=0; k<n; k++) {
+                if (arr1List.get(i).charAt(k)=='1' || arr2List.get(i).charAt(k)=='1') {
+                    sb.append('#');
+                } else {
+                    sb.append(" ");
+                }
+            }
+            
+            result[i] = sb.toString();
+            sb.setLength(0);
+        }
+        
+        return result;
+    }
+}
