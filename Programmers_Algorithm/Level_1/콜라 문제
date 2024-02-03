@@ -1,0 +1,21 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int a, int b, int n) {
+        
+        int bottle = n;
+        int count = 0;
+        
+        while (true) {
+            
+            if (bottle >= a) {
+                count += (bottle/a)*b;
+                bottle = (bottle/a)*b + (bottle%a);
+            } else {
+                break;
+            }
+        }
+        
+        return count;
+    }
+}
