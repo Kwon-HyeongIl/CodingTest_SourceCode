@@ -1,0 +1,25 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int[] nums) {
+        
+        int max = nums.length / 2;
+        int count = 0;
+        List<Integer> list = new ArrayList<>();
+        
+        for (int num : nums) {
+            if (list.contains(num)) {
+                continue;
+            }
+            
+            list.add(num);
+            count++;
+            
+            if (count == max) {
+                return count;
+            }
+        }
+        
+        return count;
+    }
+}
