@@ -1,0 +1,16 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int k, int m, int[] score) {
+        
+        List<Integer> scoreList = new ArrayList<>();
+        Arrays.stream(score).boxed().sorted(Comparator.reverseOrder()).forEach(scoreList::add);
+        
+        int sum = 0;
+        for (int i=m-1; i<scoreList.size(); i+=m) {
+            sum += scoreList.get(i) * m;
+        }
+    
+        return sum;
+    }
+}
