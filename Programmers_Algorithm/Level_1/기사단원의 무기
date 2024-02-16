@@ -1,0 +1,43 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int number, int limit, int power) {
+        
+        List<Integer> list = countAttackPoint(number);
+        int result = 0;
+        
+        for (int num : list) {
+            System.out.println(num);
+            if (num > limit) {
+                result += power;
+            } else {
+                result += num;
+            }
+        }
+        
+        return result;
+    }
+    
+    private List<Integer> countAttackPoint(int max) {
+        
+        List<Integer> list = new ArrayList<>();
+
+        for (int i=1; i<=max; i++) {
+            int count = 0;
+            
+            for (int k=1; k<=Math.sqrt(i); k++) {
+                if (i%k == 0) {
+                    if (k*k == i) {
+                        count++;
+                    } else {
+                        count += 2;
+                    }
+                }
+            }
+            
+            list.add(count);
+        }
+        
+        return list;
+    }
+}
