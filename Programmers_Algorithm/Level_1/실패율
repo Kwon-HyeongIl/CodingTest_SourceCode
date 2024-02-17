@@ -1,0 +1,72 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int N, int[] stages) {
+        
+        List<FailPerStage> list = new ArrayList<>();
+        Arrays.sort(stages);
+        
+        int leftTotal = stages.length;
+        int k = 0;
+        
+        T : for (int i=1; i<=N; i++) {
+            int tempCount = 0;
+            
+            while(true) {
+
+                if (k == stages.length) {
+                    list.add(new FailPerStage(i, (double)tempCount/leftTotal));
+                    
+                    if (i != N) {
+                        for (int j=i+1; j<=N; j++) {
+                            list.add(new FailPerStage(j, 0));
+                        }
+                    }
+                    
+                    break T;
+                }
+                
+                if (stages[k] != i) {
+                    if (tempCount == 0) {
+                        list.add(new FailPerStage(i, 0));
+                        continue T;
+                    }
+                    break;
+                    
+                } else {
+                    tempCount++;
+                    k++;
+                }
+            }
+            
+            list.add(new FailPerStage(i, (double)tempCount/leftTotal));
+            leftTotal -= tempCount;
+        }
+        
+        Collections.sort(list, new Comparator<FailPerStage>() {
+            
+            @Override
+            public int compare(FailPerStage o1, FailPerStage o2) {
+
+                if (o1.failure != o2.failure) {
+                    return Double.compare(o2.failure, o1.failure);
+                } else {
+                    return o1.stageNum - o2.stageNum;
+                }
+            }
+        });
+        
+        return list.stream().mapToInt(o -> o.stageNum).toArray();
+    }
+    
+    private class FailPerStage {
+        
+        int stageNum;
+        double failure;
+        
+        FailPerStage(int stageNum, double failure) {
+            this.stageNum = stageNum;
+            this.failure = failure;
+        }
+    }
+}
