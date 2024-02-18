@@ -1,0 +1,46 @@
+import java.util.*;
+
+class Solution {
+    
+    public int solution(String[] babbling) {
+        
+        List<String> list = new ArrayList<>();
+        list.add("aya");
+        list.add("ye");
+        list.add("woo");
+        list.add("ma");
+        
+        int count = 0;
+        
+        T : for (String word : babbling) {
+            
+            String beforeBab = " ";
+            K : while (true) {
+                for (String bab : list) {
+                    
+                    if (word.startsWith(bab)) {
+                        
+                        // 이전 문자랑 일치할 경우
+                        if (bab.equals(beforeBab)) {
+                            continue;
+                        } 
+                        
+                        // 마지막일 경우
+                        if (word.length() == bab.length()) {
+                            count++;
+                            continue T;
+                        }
+                        
+                        word = word.substring(bab.length());
+                        beforeBab = bab;
+                        continue K;
+                    }
+                }
+                
+                break;
+            }
+        }
+        
+        return count;
+    }
+}
