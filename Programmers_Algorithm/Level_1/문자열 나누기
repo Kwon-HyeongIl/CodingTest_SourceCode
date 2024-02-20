@@ -1,0 +1,41 @@
+class Solution {
+    public int solution(String s) {
+        
+        int count = 0;
+        
+        while (true) {
+            
+            if (s.length() == 1) {
+                return ++count;
+            }
+            
+            char sameChar = s.charAt(0);
+            int sameCount = 1;
+            int diffCount = 0;
+            
+            for (int i=1; i<s.length(); i++) {
+                if (s.charAt(i) == sameChar) {
+                    sameCount++;
+                } else {
+                    diffCount++;
+                }
+                
+                if (sameCount == diffCount) {
+                    if (i == s.length()-1) {
+                        return ++count;
+                    }
+                    
+                    count++;
+                    s = s.substring(i+1);
+                    
+                    break;
+                }
+                
+                if (i == s.length()-1) {
+                    return ++count;
+                }
+            }
+        }
+
+    }
+}
