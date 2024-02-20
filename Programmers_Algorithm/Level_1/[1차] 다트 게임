@@ -1,0 +1,68 @@
+import java.util.*;
+
+class Solution {
+    public int solution(String dartResult) {
+        
+        int result = 0;
+        int tempNum = 0;
+        int[] memoryTwo = new int[2];
+        memoryTwo[0] = -1111;
+        memoryTwo[1] = -1111;
+        boolean checkTen = false;
+        
+        for (char c : dartResult.toCharArray()) {
+            
+            // 숫자일 경우
+            if (c>='0' && c<='9') {
+                if (checkTen) {
+                    tempNum = 10;
+                } else {
+                    tempNum = Character.getNumericValue(c);
+                    checkTen = true;
+                }
+                continue;
+            }
+            
+            // 문자일 경우
+            if (c=='S' || c=='D' || c=='T') {
+                checkTen = false;
+                
+                // 메모리 2칸이 다 찼을 경우
+                if (memoryTwo[1] != -1111 && memoryTwo[1] != -2222) {
+                    result += memoryTwo[1];
+                }
+                
+                // 옆으로 슬라이딩
+                if (memoryTwo[0] != -1111) {
+                    memoryTwo[1] = memoryTwo[0];
+                }
+                
+                if (c == 'S') {
+                    memoryTwo[0] = tempNum;
+                } else if (c == 'D') {
+                    memoryTwo[0] = tempNum * tempNum;
+                } else if (c == 'T') {
+                    memoryTwo[0] = tempNum * tempNum * tempNum;
+                }
+                
+                System.out.println("처음 수 : " + memoryTwo[0]);
+                System.out.println("두번째 수 : " + memoryTwo[1]);
+                System.out.println();
+            }
+            
+            // 보너스일 경우
+            if (c=='*' || c=='#') {
+                if (c == '*') {
+                    memoryTwo[0] *= 2;
+                    memoryTwo[1] *= 2;
+                } else if (c == '#') {
+                    memoryTwo[0] *= -1;
+                }
+            }
+        }
+        
+        result += memoryTwo[0] + memoryTwo[1];
+        
+        return result;
+    }
+}
