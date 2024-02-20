@@ -1,0 +1,38 @@
+import java.util.*;
+
+class Solution {
+    public String solution(String s, String skip, int index) {
+        
+        StringBuilder sb = new StringBuilder();
+        List<Integer> skipChar = new ArrayList<>();
+        skip.chars().forEach(skipChar::add);
+        
+        for (char c : s.toCharArray()) {
+            int count = 0;
+            int i = c;
+            
+            while (count != index) {
+                i++;
+                
+                if (skipChar.contains(i)) {
+                    continue;
+                }
+                
+                if (i >= 'z'+1) {
+                    i = 'a'-1;
+                    continue;
+                }
+                
+                count++;
+            }
+            
+            if (i == 'z'+1) {
+                i = 'a';
+            }
+
+            sb.append((char)i);
+        }
+        
+        return sb.toString();
+    }
+}
