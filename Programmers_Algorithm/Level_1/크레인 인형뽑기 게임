@@ -1,0 +1,32 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int[][] board, int[] moves) {
+        
+        Stack<Integer> st = new Stack<>();
+        int count = 0;
+        
+        for (int move : moves) {
+            
+            for (int i=0; i<board.length; i++) {
+                int grab = board[i][move-1];
+                
+                if (grab == 0) {
+                    continue;
+                }
+                board[i][move-1] = 0;
+                
+                if (!st.empty() && st.peek()==grab) {
+                    count += 2;
+                    st.pop();
+                } else {
+                    st.push(grab);
+                }
+                
+                break;
+            }
+        }
+        
+        return count;
+    }
+}
