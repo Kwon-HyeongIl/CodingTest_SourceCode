@@ -1,0 +1,39 @@
+class Solution {
+    public int[] solution(String[] keymap, String[] targets) {
+        
+        int[] result = new int[targets.length];
+        
+        for (int k=0; k<targets.length; k++) {
+            String target = targets[k];
+            boolean check = false;
+            int count = 0;
+
+            for (char c : target.toCharArray()) {
+                
+                T : for (int i=0; i<100; i++) {
+                    for (String key : keymap) {
+                        if (key.length() <= i) {
+                            continue;
+                        }
+                        if (key.charAt(i) == c) {
+                            count += i+1;
+                            break T;
+                        }
+                    }
+                    
+                    if (i == 99) {
+                        check = true;
+                    }
+                }
+            }
+            
+            if (check) {
+                result[k] = -1;
+            } else {
+                result[k] = count;
+            }
+        }
+        
+        return result;
+    }
+}
