@@ -1,0 +1,20 @@
+class Solution {
+    public int solution(int[] ingredient) {
+        
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+        int fromIndex = 0;
+        
+        for (int n : ingredient) {
+            sb.append(n);
+            int index = sb.indexOf("1231", fromIndex);
+            if (index != -1) {
+                sb.delete(index, index+4);
+                fromIndex = index-4;
+                count++;
+            }
+        }
+        
+        return count;
+    }
+}
