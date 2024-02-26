@@ -1,0 +1,120 @@
+class Solution {
+    public String solution(String[] survey, int[] choices) {
+
+        int[] RT = new int[2];
+        int[] CF = new int[2];
+        int[] JM = new int[2];
+        int[] AN = new int[2];
+        
+        for (int i=0; i<survey.length; i++) {
+            
+            // RT/TR
+            if (survey[i].equals("RT")) {
+                if (choices[i]>=1 && choices[i]<=3) {
+                    RT[0] += 4-choices[i];
+                } else if (choices[i]>=5 && choices[i]<=7) {
+                    RT[1] += choices[i]-4;
+                } 
+                continue;
+                
+            } else if (survey[i].equals("TR")) {
+                if (choices[i]>=1 && choices[i]<=3) {
+                    RT[1] += 4-choices[i];
+                } else if (choices[i]>=5 && choices[i]<=7) {
+                    RT[0] += choices[i]-4;
+                } 
+                continue;
+            }
+            
+            // CF/FC
+            if (survey[i].equals("CF")) {
+                if (choices[i]>=1 && choices[i]<=3) {
+                    CF[0] += 4-choices[i];
+                } else if (choices[i]>=5 && choices[i]<=7) {
+                    CF[1] += choices[i]-4;
+                } 
+                continue;
+                
+            } else if (survey[i].equals("FC")) {
+                if (choices[i]>=1 && choices[i]<=3) {
+                    CF[1] += 4-choices[i];
+                } else if (choices[i]>=5 && choices[i]<=7) {
+                    CF[0] += choices[i]-4;
+                } 
+                continue;
+            }
+            
+            // JM/MJ
+            if (survey[i].equals("JM")) {
+                if (choices[i]>=1 && choices[i]<=3) {
+                    JM[0] += 4-choices[i];
+                } else if (choices[i]>=5 && choices[i]<=7) {
+                    JM[1] += choices[i]-4;
+                } 
+                continue;
+                
+            } else if (survey[i].equals("MJ")) {
+                if (choices[i]>=1 && choices[i]<=3) {
+                    JM[1] += 4-choices[i];
+                } else if (choices[i]>=5 && choices[i]<=7) {
+                    JM[0] += choices[i]-4;
+                } 
+                continue;
+            }
+            
+            // AN/NA
+            if (survey[i].equals("AN")) {
+                if (choices[i]>=1 && choices[i]<=3) {
+                    AN[0] += 4-choices[i];
+                } else if (choices[i]>=5 && choices[i]<=7) {
+                    AN[1] += choices[i]-4;
+                } 
+                continue;
+                
+            } else if (survey[i].equals("NA")) {
+                if (choices[i]>=1 && choices[i]<=3) {
+                    AN[1] += 4-choices[i];
+                } else if (choices[i]>=5 && choices[i]<=7) {
+                    AN[0] += choices[i]-4;
+                } 
+                continue;
+            } 
+        }
+        
+        StringBuilder sb = new StringBuilder();
+        
+        if (RT[0] > RT[1]) {
+            sb.append("R");
+        } else if (RT[0] == RT[1]) {
+            sb.append("R");
+        } else {
+            sb.append("T");
+        }
+        
+        if (CF[0] > CF[1]) {
+            sb.append("C");
+        } else if (CF[0] == CF[1]) {
+            sb.append("C");
+        } else {
+            sb.append("F");
+        }
+        
+        if (JM[0] > JM[1]) {
+            sb.append("J");
+        } else if (JM[0] == JM[1]) {
+            sb.append("J");
+        } else {
+            sb.append("M");
+        }
+        
+        if (AN[0] > AN[1]) {
+            sb.append("A");
+        } else if (AN[0] == AN[1]) {
+            sb.append("A");
+        } else {
+            sb.append("N");
+        }
+        
+        return sb.toString();
+    }
+}
