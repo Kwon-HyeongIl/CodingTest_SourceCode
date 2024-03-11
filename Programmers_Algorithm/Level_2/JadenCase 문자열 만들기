@@ -1,0 +1,32 @@
+class Solution {
+    public String solution(String s) {
+        
+        StringBuilder sb = new StringBuilder(s);
+        int count = 0;
+        
+        for (int i=0; i<sb.length(); i++) {
+            char c = sb.charAt(i);
+                
+            if (c == ' ') {
+                count = 0;
+                continue;
+            }
+            
+            // 첫글자일 경우
+            if (count==0 && c!=' ') {
+                sb.deleteCharAt(i);
+                sb.insert(i, Character.toUpperCase(c));
+                count++;
+                continue;
+            }
+            
+            if (count != 0) {
+                sb.deleteCharAt(i);
+                sb.insert(i, Character.toLowerCase(c));
+                count++;
+            }
+        }
+        
+        return sb.toString();
+    }
+}
