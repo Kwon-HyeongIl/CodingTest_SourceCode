@@ -1,0 +1,39 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(String[] id_list, String[] report, int k) {
+        
+        List<String> idList = new ArrayList<>();
+        Arrays.stream(id_list).forEach(idList::add);
+        
+        List<String>[] checkList = new ArrayList[id_list.length];
+        for (int i=0; i<id_list.length; i++) {
+            checkList[i] = new ArrayList<>();
+        }
+        int[] reportCount = new int[id_list.length];
+        
+        for (String r : report) {
+            String reportUser = r.split(" ")[0];
+            String reportedUser = r.split(" ")[1];
+            
+            int index = idList.indexOf(reportedUser);
+            
+            // 처음 신고했을 경우
+            if (!checkList[index].contains(reportUser)) {
+                reportCount[index]++;
+                checkList[index].add(reportUser);
+            }
+        }
+        
+        int[] result = new int[id_list.length];
+        for (int i=0; i<reportCount.length; i++) {
+            if (reportCount[i] >= k) {
+                for (String user : checkList[i]) {
+                    result[idList.indexOf(user)]++;
+                }
+            }
+        }
+        
+        return result;
+    }
+}
