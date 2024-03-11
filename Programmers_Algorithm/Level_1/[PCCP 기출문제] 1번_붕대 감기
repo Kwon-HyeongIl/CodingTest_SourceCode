@@ -1,0 +1,51 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int[] bandage, int health, int[][] attacks) {
+        
+        int plusTime = bandage[0];
+        int perHeal = bandage[1];
+        int plusHeal = bandage[2];
+        int nowHealth = health;
+        
+        int lastTime = attacks[attacks.length-1][0];
+        int attackIndex = 0;
+        int keepHealthCount = 1;
+        
+        for (int i=1; i<=lastTime; i++) {
+            
+            // 공격 들어올 경우
+            if (i == attacks[attackIndex][0]) {
+                nowHealth -= attacks[attackIndex++][1];
+                if (nowHealth <= 0) {
+                    return -1;
+                }
+                keepHealthCount = 1;
+                continue;
+            }
+            
+            // 추가 체력 회복
+            if (keepHealthCount == plusTime) {
+                if ((nowHealth+perHeal+plusHeal) > health) {
+                    nowHealth = health;
+                } else {
+                    nowHealth += (perHeal+plusHeal);
+                }
+                
+                keepHealthCount = 1;
+                continue;
+            }
+            
+            // 기본 체력 회복
+            if ((nowHealth+perHeal) >= health) {
+                nowHealth = health;
+                continue;
+            } else {
+                nowHealth += perHeal;
+                keepHealthCount++;
+            }
+        }
+        
+        return nowHealth;
+    }
+}
