@@ -1,0 +1,7 @@
+import Foundation
+
+let s1 = readLine()!
+
+for c in Array(s1) {
+    print(c)
+}
