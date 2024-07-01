@@ -1,0 +1,9 @@
+import Foundation
+
+func solution(_ my_string:String, _ overwrite_string:String, _ s:Int) -> String {
+
+    let first = my_string.prefix(s)
+    let last = my_string.suffix(my_string.count - (s + overwrite_string.count))
+    
+    return first + overwrite_string + last
+}
