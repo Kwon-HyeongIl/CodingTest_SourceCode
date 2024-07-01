@@ -1,0 +1,7 @@
+import Foundation
+
+let a = Int(readLine()!)!
+
+let text = a%2==0 ? "is even" : "is odd"
+
+print("\(a) \(text)")
