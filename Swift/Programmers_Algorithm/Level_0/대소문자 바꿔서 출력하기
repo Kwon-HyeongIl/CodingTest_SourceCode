@@ -1,0 +1,11 @@
+import Foundation
+
+let s1 = readLine()!
+
+for ch in Array(s1) {
+    if ch.isUppercase {
+        print(ch.lowercased(), terminator: "")
+    } else {
+        print(ch.uppercased(), terminator: "")
+    }
+}
