@@ -1,0 +1,19 @@
+import Foundation
+
+func solution(_ a:Int, _ d:Int, _ included:[Bool]) -> Int {
+    
+    var result = 0
+    var newA = a
+    
+    for check in included {
+        if !check {
+            newA += d
+            continue
+        }
+        
+        result += newA
+        newA += d
+    }
+    
+    return result
+}
