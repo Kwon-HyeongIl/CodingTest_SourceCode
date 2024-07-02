@@ -1,0 +1,36 @@
+import Foundation
+
+func solution(_ code:String) -> String {
+    
+    var ret = ""
+    var mode = 0
+    
+    for (idx, c) in code.enumerated() {
+        
+        if c == "1" {
+            if mode == 0 {
+                mode = 1
+                continue
+            } else {
+                mode = 0
+                continue
+            }
+        }
+        
+        if mode==0 && idx%2==0 {
+            ret.append(c)
+            continue
+        }
+        
+        if mode==1 && idx%2==1 {
+            ret.append(c)
+            continue
+        }
+    }
+    
+    if ret.isEmpty {
+        return "EMPTY"
+    } else {
+        return ret
+    }
+}
