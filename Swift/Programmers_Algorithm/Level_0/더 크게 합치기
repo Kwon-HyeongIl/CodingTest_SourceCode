@@ -1,0 +1,18 @@
+import Foundation
+
+func solution(_ a:Int, _ b:Int) -> Int {
+    
+    var result1: Int
+    var result2: Int
+
+    result1 = Int(String(a) + String(b))!
+    result2 = Int(String(b) + String(a))!
+    
+    if result1 > result2 {
+        return result1
+    } else if result1 < result2 {
+        return result2
+    } else {
+        return result1
+    }
+}
