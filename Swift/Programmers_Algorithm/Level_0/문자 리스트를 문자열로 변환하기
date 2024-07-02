@@ -1,0 +1,12 @@
+import Foundation
+
+func solution(_ arr:[String]) -> String {
+    
+    var result = ""
+    
+    for c in arr {
+        result.append(c)
+    }
+    
+    return result
+}
