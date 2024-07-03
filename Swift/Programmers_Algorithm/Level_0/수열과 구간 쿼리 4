@@ -1,0 +1,16 @@
+import Foundation
+
+func solution(_ arr:[Int], _ queries:[[Int]]) -> [Int] {
+    
+    var resultArr = arr
+    
+    for qrArr in queries {
+        for i in qrArr[0]...qrArr[1] {
+            if i%qrArr[2] == 0 {
+                resultArr[i] += 1
+            }
+        }
+    }
+    
+    return resultArr
+}
