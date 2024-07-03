@@ -1,0 +1,23 @@
+import Foundation
+
+func solution(_ numLog:[Int]) -> String {
+    
+    var result = ""
+    
+    for i in 0..<numLog.count-1 {
+        
+        var temp = numLog[i+1] - numLog[i]
+        
+        if temp == 1 {
+            result.append("w")
+        } else if temp == -1 {
+            result.append("s")
+        } else if temp == 10 {
+            result.append("d")
+        } else {
+            result.append("a")
+        }
+    }
+    
+    return result
+}
