@@ -1,0 +1,17 @@
+import Foundation
+
+func solution(_ num_list:[Int]) -> Int {
+    
+    var oddNum = ""
+    var evenNum = ""
+    
+    for n in num_list {
+        if n%2 == 0 {
+            evenNum.append(String(n))
+        } else {
+            oddNum.append(String(n))
+        }
+    }
+    
+    return Int(oddNum)! + Int(evenNum)!
+}
