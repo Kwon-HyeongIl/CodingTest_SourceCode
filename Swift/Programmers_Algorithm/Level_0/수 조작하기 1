@@ -1,0 +1,20 @@
+import Foundation
+
+func solution(_ n:Int, _ control:String) -> Int {
+    
+    var result = n
+    
+    for ch in control {
+        if ch == "w" {
+            result += 1
+        } else if ch == "s" {
+            result -= 1
+        } else if ch == "d" {
+            result += 10
+        } else {
+            result -= 10
+        }
+    }
+    
+    return result
+}
