@@ -1,0 +1,16 @@
+import Foundation
+
+func solution(_ num_list:[Int]) -> [Int] {
+    
+    var resultArr = num_list
+    var lastOne = resultArr[resultArr.count-1]
+    var lastTwo = resultArr[resultArr.count-2]
+    
+    if lastOne > lastTwo {
+        resultArr.append(lastOne - lastTwo)
+    } else {
+        resultArr.append(lastOne * 2)
+    }
+    
+    return resultArr
+}
