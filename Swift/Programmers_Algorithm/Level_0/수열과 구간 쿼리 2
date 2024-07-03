@@ -1,0 +1,29 @@
+import Foundation
+
+func solution(_ arr:[Int], _ queries:[[Int]]) -> [Int] {
+    
+    var resultArr: [Int] = []
+    
+    for qrArr in queries {
+        
+        var temp = -1
+        for i in qrArr[0]...qrArr[1] {
+            
+            if arr[i] > qrArr[2] {
+                
+                if temp == -1 {
+                    temp = arr[i]
+                    continue
+                }
+                
+                if temp > arr[i] { 
+                    temp = arr[i]
+                }
+            }
+        }
+        
+        resultArr.append(temp)
+    }
+    
+    return resultArr
+}
