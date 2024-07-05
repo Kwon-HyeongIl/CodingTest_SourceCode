@@ -1,0 +1,12 @@
+import Foundation
+
+func solution(_ my_strings:[String], _ parts:[[Int]]) -> String {
+    
+    var result = ""
+    
+    for (i, part) in parts.enumerated() {
+        result.append(String(Array(my_strings[i])[part[0]...part[1]]))
+    }
+    
+    return result
+}
