@@ -1,0 +1,20 @@
+import Foundation
+
+func solution(_ my_string:String, _ queries:[[Int]]) -> String {
+    
+    var result = Array(my_string)
+    
+    for qArr in queries {
+        
+        var first = qArr[0]
+        var last = qArr[1]
+        
+        while first < last {
+            result.swapAt(first, last)
+            first += 1
+            last -= 1
+        }
+    }
+    
+    return String(result)
+}
