@@ -1,0 +1,17 @@
+import Foundation
+
+func solution(_ n:Int) -> [Int] {
+    
+    var resultArr: [Int] = []
+    var temp = n
+    resultArr.append(temp)
+    
+    while temp != 1 {
+        
+        temp = temp%2==0 ? temp/2 : 3*temp+1
+        
+        resultArr.append(temp)
+    }
+    
+    return resultArr
+}
