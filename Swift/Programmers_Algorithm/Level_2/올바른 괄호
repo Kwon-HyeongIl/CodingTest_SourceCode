@@ -1,0 +1,19 @@
+import Foundation
+
+func solution(_ s:String) -> Bool {
+    
+    var checkArr: [String] = []
+    
+    for ch in s {
+        if ch == "(" {
+            checkArr.append("(")
+            continue
+        }
+        
+        if checkArr.isEmpty || checkArr.popLast()! != "(" {
+            return false
+        }
+    }
+
+    return checkArr.isEmpty ? true : false
+}
