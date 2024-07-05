@@ -1,0 +1,18 @@
+import Foundation
+
+func solution(_ l:Int, _ r:Int) -> [Int] {
+    
+    var resultArr: [Int] = []
+    
+    T: for n in stride(from: l, through: r, by: 1) {
+        for ch in String(n) {
+            guard ch=="5" || ch=="0" else {
+                continue T
+            }
+        }
+        
+        resultArr.append(n)
+    }
+    
+    return resultArr.isEmpty ? [-1] : resultArr
+}
