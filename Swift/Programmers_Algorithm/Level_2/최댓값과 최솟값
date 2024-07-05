@@ -1,0 +1,6 @@
+func solution(_ s:String) -> String {
+    
+    var sArr = s.components(separatedBy: " ").map {Int($0)!}
+
+    return "\(sArr.min()!) \(sArr.max()!)"
+}
