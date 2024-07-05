@@ -1,0 +1,12 @@
+import Foundation
+
+func solution(_ number:String) -> Int {
+    
+    var sum = 0
+    
+    for ch in number {
+        sum += Int(String(ch))!
+    }
+    
+    return sum % 9
+}
