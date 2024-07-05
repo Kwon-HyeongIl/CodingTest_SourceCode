@@ -1,0 +1,13 @@
+import Foundation
+
+func solution(_ my_string:String, _ index_list:[Int]) -> String {
+    
+    var result = ""
+    var tempArr = Array(my_string)
+    
+    for i in index_list {
+        result.append(tempArr[i])
+    }
+    
+    return result
+}
