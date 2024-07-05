@@ -1,0 +1,15 @@
+import Foundation
+
+func solution(_ intStrs:[String], _ k:Int, _ s:Int, _ l:Int) -> [Int] {
+    
+    var result: [Int] = []
+    
+    for st in intStrs {
+        var temp = Int(String(Array(st)[s..<s+l]))!
+        if temp > k {
+            result.append(temp)
+        }
+    }
+    
+    return result
+}
