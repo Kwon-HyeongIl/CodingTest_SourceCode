@@ -1,10 +1,6 @@
 # CodingTest_SourceCode
-📄 직접 푼 코딩테스트 소스코드
+📄 직접 푼 코딩테스트 소스코드 
+<br><br>
 
-코딩테스트 플랫폼마다 문제 단계별로 분류해서 정리
-
-<br>
-현재까지 풀어본 플랫폼<br>
-- 프로그래머스<br>
-- 백준<br>
-- 구름 (대회용)
+![Swift](https://img.shields.io/badge/swift-F54A2A?style=for-the-badge&logo=swift&logoColor=white)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
