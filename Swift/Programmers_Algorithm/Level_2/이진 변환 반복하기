@@ -1,0 +1,28 @@
+import Foundation
+
+func solution(_ s:String) -> [Int] {
+    
+    var x = s
+    var binaryCount = 0
+    var deleteZeroCount = 0
+    
+    while x != "1" {
+        
+        var temp = ""
+        
+        for ch in x {
+            if ch == "0" {
+                deleteZeroCount += 1
+                continue
+            }    
+            
+            temp.append(ch)
+        }
+        
+        x = String(temp.count, radix: 2)
+        
+        binaryCount += 1
+    }
+    
+    return [binaryCount, deleteZeroCount]
+}
