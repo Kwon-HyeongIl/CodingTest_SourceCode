@@ -1,0 +1,23 @@
+import Foundation
+
+func solution(_ brown:Int, _ yellow:Int) -> [Int] {
+    
+    var nowYellow: Int
+    
+    // 세로 길이 3부터 시작
+    for height in 3...brown-5 {
+        
+        nowYellow = (height - 2) * (height - 2)
+        
+        // 가로 길이는 세로 길이부터 시작
+        for width in height...brown-5 {
+            if ((height*2) + ((width-2)*2) == brown) && (nowYellow == yellow) {
+                return [width, height]
+            }
+            
+            nowYellow += height - 2 
+        }
+    }
+    
+    return []
+}
