@@ -1,0 +1,48 @@
+import Foundation
+
+func solution(_ s:String) -> Int {
+    
+    var sArr = Array(s)
+    var tempArr: [Character] = []
+    var count = 0
+    
+    A: for i in 0..<s.count {
+        
+        tempArr = []
+        
+        if i != 0 {
+            var fistTemp = sArr.removeFirst()
+            sArr.append(fistTemp)
+        }
+        
+        for ch in sArr {
+            
+            if tempArr.isEmpty || (ch == "[" || ch == "(" || ch == "{") {
+                tempArr.append(ch)
+                continue
+            } 
+            
+            var lastValue = tempArr.removeLast()
+            
+            if ch == "]" {
+                if lastValue != "[" {
+                    continue A
+                }
+            } else if ch == ")" {
+                if lastValue != "(" {
+                    continue A
+                }
+            } else {
+                if lastValue != "{" {
+                    continue A
+                }
+            }
+        }
+        
+        if tempArr.isEmpty {
+            count += 1
+        } 
+    }
+    
+    return count
+}
